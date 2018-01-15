@@ -2516,6 +2516,8 @@ EVENTOS de la ventana: scroll, resize, hashchange, load, unload
 
 
 ------------------------------------------------------------
+API
+
 
 MARVEL DEVELOPER
 
@@ -2536,6 +2538,19 @@ Your private key
 developer.marvel.com
 
 
+NASA DEVELOPER
+
+My key "li9XIyEGDAn1wWucHxGucqgUATJEg0Pf3yTzv7Cj"
+
+Imagen del día:
+GET https://api.nasa.gov/planetary/apod?api_key=li9XIyEGDAn1wWucHxGucqgUATJEg0Pf3yTzv7Cj
+-Seleccionar una fecha especifica... agregar al la petición &date=YYYY-MM-DD
+GET https://api.nasa.gov/planetary/apod?api_key=li9XIyEGDAn1wWucHxGucqgUATJEg0Pf3yTzv7Cj&date=YYYY-MM-DD
+
+
+Asteroides:
+GET https://api.nasa.gov/neo/rest/v1/feed?start_date=START_DATE&end_date=END_DATE&api_key=API_KEY
+date=YYYY-MM-DD
 
 
 
@@ -2547,9 +2562,19 @@ developer.marvel.com
 
 
 
+===============================================================================
+===============================================================================
 ===============================================================================
 					VUE JS VUE JS VUE JS VUE JS VUE JS VUE JS VUE JS VUE JS
+					VUE JS VUE JS VUE JS VUE JS VUE JS VUE JS VUE JS VUE JS
+					VUE JS VUE JS VUE JS VUE JS VUE JS VUE JS VUE JS VUE JS
 ===============================================================================
+===============================================================================
+===============================================================================
+===============================================================================
+
+
+
 
 
 
@@ -2697,6 +2722,7 @@ CONTROLAR EVENTOS
 
 v-on:evento a escuchar="nombre del metodo"
 v-on:click="sumar"
+@click="sumar"
 
 <button v-on:click="sumar">Sumar 1</button>
 <button v-on:click="restar">Restar 1</button>
@@ -2758,7 +2784,7 @@ con submit.prevent impedimos que el formulario se envie de inmediato
 
 data:{
   ...,
-  cursos=[]
+  cursos: []
 },
 methods:{
   submit: function(){
@@ -2821,8 +2847,9 @@ COMPONENTES
   </template>
   <button type="submit">Enviar</button>
 </form>
+
 Vue.component(nombre de etiqueta, {
-  props:[], // Propiedades para dibujarse
+  props:[], // Propiedades que el elemento necesita para dibujarse
   template: `Lo que se va a dibujar dentro de la etiqueta`
 })
 
