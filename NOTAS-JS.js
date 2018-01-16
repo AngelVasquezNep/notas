@@ -2858,6 +2858,8 @@ Vue.component(`curso`, {
   methods:{
     onchage: function(ev){
       // Para emitir un evento
+			// this.$emit("nombre del evento a emitir", parametros del mismo)
+			// Esa funcion se escribe dentro del componenente principal y recibira como parametro los parametro que aquí hayamos definido.
       this.$emit("checked", this.curso.value, ev.target.checked)
     }
   },

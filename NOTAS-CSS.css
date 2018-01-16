@@ -773,6 +773,14 @@ window.addEventListener("scroll", function(){
   console.log(window.scrollY)
   })
 
+Recuerda que si vas a mover algo debes agregarle su medida "px", "em", "rem"
+
+$elemento.style.backgroundPosition = window.scroll+"px"
+
+
+$elemento.style.transform = `rotate(${window.scroll}deg)`
+$elemento.style.transform = 'rotate('+ window.scrolldeg+'deg)'
+
 
 
 

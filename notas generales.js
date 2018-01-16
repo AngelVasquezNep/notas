@@ -209,6 +209,10 @@ sudo apt-get update
 sudo apt-get upgrade
 
 
+-Ver que paquetes tengo instalados
+	dpkg --get-selections
+
+
 
 
 
@@ -312,6 +316,49 @@ Disciplina
 
 ----------------------
 ATOM
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-------------------------------
+TECLADO
+
+Ctrol + Mayús + N = Pestaña en incógnito
+Ctrol + 1 a 8 = ir a pág en especifico
+Ctrol + 9 = ir a última pág
+
+=> Alt + iniciio = abrir pág de inicio en pestaña activa
+
+Alt + f = Abrir menú de Chrome
+Ctrol + mayús + o = Abrir administrador de marcadores
+
+
 
 
 
