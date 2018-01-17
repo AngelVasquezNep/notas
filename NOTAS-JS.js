@@ -2381,7 +2381,7 @@ c
 
 Súper frontend developer
 https://github.com/dbritobcn
-
+www.rafaelerasmo.com
 
 
 
@@ -2565,9 +2565,13 @@ date=YYYY-MM-DD
 ===============================================================================
 ===============================================================================
 ===============================================================================
-					VUE JS VUE JS VUE JS VUE JS VUE JS VUE JS VUE JS VUE JS
-					VUE JS VUE JS VUE JS VUE JS VUE JS VUE JS VUE JS VUE JS
-					VUE JS VUE JS VUE JS VUE JS VUE JS VUE JS VUE JS VUE JS
+					 \\\\\			  ////// 		||||	  |||| 		  ||||||||||||
+						\\\\\	     //////			||||	  ||||			||||
+						 \\\\\    //////	  	||||	  ||||			||||
+						  \\\\\  //////				||||	  ||||			||||||||
+							 \\\\\////// 				||||	  ||||			||||
+							  \\\\\////					\\\\\  /////			||||
+							 	 \\\\\//		  	   \\\\\/////			  ||||||||||||
 ===============================================================================
 ===============================================================================
 ===============================================================================
@@ -2584,7 +2588,7 @@ date=YYYY-MM-DD
 Caracteristicas
 
 -Framework progresivo
-  -Escalable, sirve para proyectos pequeños y grandes.
+-Escalable, sirve para proyectos pequeños y grandes.
 -MV Está orientado a modelos y vistas
 -Reactivo
 -Vue.js core --> UI
@@ -2642,10 +2646,11 @@ Ahora ese elemento es REACTIVO ! si queremos cambiar el valor de nombre lo podem
 v-bind: Sirve para que podamos poner variables dentro de los atributos
 
 
+
 --------------------------
 CONDICIONALES VUE
-Mostrar u ocultar elementos
 
+Mostrar u ocultar elementos
 
 Al elemento que queremos que se muestre (o no ) le colocamos el atributo v-if="variable" y la variable que tendra el condicional:
 <div id="app">
@@ -2749,6 +2754,10 @@ const app = new Vue({
 FORMULARIOS
 
 
+Para obtener el valor de un formulario, al input le agregamos v-model="variable donde queremos que se guarde el dato"
+=> v-model="nombre" u
+=> v-model="objeto.name" Si es que queremos agregar el atributo a un objeto
+
 <div id="app">
   <input type="text" name="nombre" placeholder="Ingresa tu nombre" v-model="nombre"/>
   <p>Tu nombre en mayúscula es: {{nombre | uppercase}}</p>
@@ -2780,7 +2789,8 @@ Con v-model obtenemos lo que el usuario escriba y lo guardamos en la variable qu
   <button type="submit">Enviar</button>
 </form>
 
-con submit.prevent impedimos que el formulario se envie de inmediato
+con @submit.prevent impedimos que el formulario se envie de inmediato y le agregamos un metodo
+@submit.prevent="metodo a ejecutar"
 
 data:{
   ...,
@@ -2839,13 +2849,19 @@ COMPONENTES
 
 
 <form v-on:submit.prevent="submit" action="">
+
   <h2>¿Cuáles son tus cursos favoritos?</h2>
+
   <template v-for="curso in cursos">
-    <curso v-bind:curso="curso" v-on:checked="selectCurso"></curso>
+
+    <curso v-bind:curso="curso" @checked="selectCurso" ></curso> //Aquie la funcion @checked es la que definimos en nuestro componente y el ="selectCurso" es lo que queremos que haga cuando se ejecute la accion
     // <input v-model="cursosSeleccionados" type="checkbox" v-bind:id="curso.value" v-bind:value="curso.value"/>
     // <label v-bind:for="curso.value">{{curso.nombre}}</label>
+
   </template>
-  <button type="submit">Enviar</button>
+
+	<button type="submit">Enviar</button>
+
 </form>
 
 Vue.component(nombre de etiqueta, {
@@ -2901,15 +2917,72 @@ const app = new Vue({
 
 
 
+
+--------------------------
+AGREGAR CLASES DINAMICAMENTE
+
+En el componente ponemos
+<div :class="{clase1: variable, clase2: variable}"></div>
+<div :class="{clase1: true, clase2: false}"></div>
+<div :class="{clase1: clicked > 5, clase2: clicked == 2}"></div>
+
+
+
+
+
+
+
+---------------------------------------------
+AGREGAR ELEMENTOS COMPUTADOS
+
+En DOM
+	<label>Tu nombre: </label>
+	<input type="text" v-model="nombre">
+	<p>Eres aceptado: {{aceptado_coputed}}</p>
+
+En Vue
+	const app = new Vue({
+		...,
+		computed:{
+			aceptado_computed()
+			if(this.nombre=="Angel"){
+				return "Por supuesto"
+			}else{
+				return "NO"
+			}
+		}
+	})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 --------------------------------------------------------
 ----------------------PLATZIMUSIC-----------------------
 --------------------------------------------------------
 
 
 Usaremos un template: webpack-simple
+
 Single page aplication tiene 1 solo html, css y js
 
+
 cli: comand line interface
+
 
 Para instalarlo:
 
@@ -2947,6 +3020,65 @@ Application name	       platzimusic
 API key	                 dbb07da9fa46417bcc64f2fb72830a6b
 Shared secret	           53ae91a072e2dcc164578d4ba8970698
 Registered to	           AngelVasquezNep
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---------------------------------------------
+PLATZIMUSIC A PRODUCCION
+
+Dentro de las cosas que tenemos que hacer es:
+1. En el documento webpack.config.js cambiar los valores de name
+		{
+			test: /\.(png|jpg|gif|svg)$/,
+			loader: 'file-loader',
+			options: {
+				name: '[name].[ext]?[hash]'
+			}
+		}
+
+		Por name: '[name].[ext]'
+
+		Por último corremos el comando
+
+						=>	npm run build  <=
+
+		y actualizamos los cambios en la rama master
+
+
+
+
+
 
 
 
@@ -2997,7 +3129,7 @@ PRACTICA
   <p>El rango es: {{rango}}</p>
   <p v-show="rango>=75"            >Ya casi soy 100</p>
   <p v-show="rango>50 & rango<75"  >El rango es mayor que 50</p>
-  <p v-show="rango==50"             >El rango es 50</p>
+  <p v-show="rango==50"            >El rango es 50</p>
   <p v-show="rango<50 & rango>25"  >Ya no</p>
   <p v-show="rango<=25"            >Está bajando</p>
   <br/>
@@ -3105,6 +3237,98 @@ const app = new Vue({
   }
 })
 
+
+
+
+-----------------------------------
+AGREGAR UN NUEVO USUARIO
+
+----HTML---
+
+<form class="" @submit.prevent="agregarUser">
+
+      <label for="username">Tu nombre: </label>
+          <input v-model="newUserSubmit.name"  required type="text" id="username" name="" value="">
+
+      <label for="userage">Tu edad: </label>
+          <input v-model="newUserSubmit.age"   required min="10" type="number" id="userage" name="" value="">
+
+
+      <input type="submit" name="" value="Nuevo usuario">
+
+</form>
+
+
+<ul v-for="user in users">
+      <newuser :user="user" @eliminarComponent="eliminarComponent"></newuser>
+</ul>
+
+
+----VUE----
+import User from '...'
+
+methods:{
+    agregarUser(){
+      // Hacemos push al objeto de usuarios
+      this.users.push(this.newUserSubmit)
+      // Seteamos el objeto nuevamente para que nos aparezca limpia la pantalla
+      this.newUserSubmit = {clicked:false, status:true}
+      console.log(this.newUserSubmit)
+    },
+		eliminarComponent(user){
+      // Le agregamos lo necesario para que se elimine
+      setTimeout(()=>user.status=false, 1000)
+      user.clicked=true
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+=======================================================
+=======================================================
+=======================================================
+
+	 \\\\			/// |||	 ||   ||||||
+		\\\\   ///  |||  ||		|||
+		 \\\\ ///		|||	 ||		||||||
+		  \\\\//		|||  ||		|||
+			 \\\\			|||||||  	||||||
+
+=======================================================
+=======================================================
+=======================================================
+
+
+También cuando utilizamos el v-for podemos obtener el indice de cada elemento:
+
+<ul>
+	<li v-for="( i, index) in items">{{index}}{{ i }}</li>
+</ul>
 
 
 
