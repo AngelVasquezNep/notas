@@ -3420,6 +3420,65 @@ methods:{
 
 
 
+-----------------------------------------
+SERVICIOS
+
+
+Consumo de API
+
+Los servicios son archivos con logica de negocios
+
+
+
+
+
+
+
+
+
+--------------
+CONSUMO DE APIs REST
+
+const url = 'https://platzi-music-api.now.sh/'
+fetch('https://platzi-music-api.now.sh/search?query=muchacha&type=track&limit=20')
+
+
+fetch('https://platzi-music-api.now.sh/search?query=muchacha&type=track')
+.then(res=>res.json())
+.then(json=>console.log(json))
+
+
+Con una aplicacion de escritorio llamada Postman podemos hacer prueba de llamadas HTTP y ver los resultados JSON
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 //
