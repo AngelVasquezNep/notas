@@ -26,8 +26,18 @@ href=””	Son para los link’s. Si ponemos un id dentro del a página, podemo
 Navegar dentro de la pagina
 <a href="index.html#guitarras"></a>
 
+Iconos
 https://dev.w3.org/html5/html-author/charref
 enlace para simbolos de html
+Iconos chidos
+icomoon
+
+
+
+
+
+
+
 
 font-size:		tamaño de fuente
 background:		color de fonto
@@ -62,7 +72,8 @@ vertical-align: middle; alinear verticalmente
 heredado: inherit;
 
 
-_blank
+hacer que un link abra en otra ventana _blank
+target="_blank"
 
 
 
@@ -267,6 +278,21 @@ Boton enviar
 <input type="submit" value="lo que quiero que diga el boton" />
 
 NOTA: A TODOS HAY QUE PONERLES VALUE
+
+
+
+
+
+
+
+Para darle tamaño input text | NO SE PUEDE es a una etiqueta textarea
+<textarea cols="30" rows="5" ></textarea>
+
+
+
+
+
+
 
 
 //////////////////////////////////////////////////
@@ -962,7 +988,7 @@ zoom: 1.5; aumenta un 50% el tamaño de los radio button ( o de cualquier otro e
 BURGER MENU
 
 
-
+Iconos chidos
 icomoon.io
 para las tipografias de los botones
 

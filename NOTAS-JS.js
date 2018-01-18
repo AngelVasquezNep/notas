@@ -3324,6 +3324,9 @@ methods:{
 =======================================================
 
 
+Como escribir un indice
+
+
 También cuando utilizamos el v-for podemos obtener el indice de cada elemento:
 
 <ul>
@@ -3331,10 +3334,84 @@ También cuando utilizamos el v-for podemos obtener el indice de cada elemento:
 </ul>
 
 
+----------------------
+Condicionales
+
+<p v-show="variable"></p>
+<p v-if="variable"></p>
+<p v-else-if="!variable"></p>
+<p v-else="otraVariable"></p>
+
+
+
+----------------------
+DATA BINDING
+
+<input type="text" v-model="algoDentroDeMiData" />
+<a :href="url" >Está es una URL de mi data y me lleva a los cursos de Platzi</a>
+data(){
+	return{
+		algoDentroDeMiData:'',
+		url: 'https://platzi.com/cursos'
+	}
+}
+
+
+----------------------
+COMPUTED PROPERTIES
+
+Es para computar propiedades, de tal forma que podemos pasar una funcion a algo antes de mostrarlo en pantalla
+
+Las propiedades computadas nos sirven para generar/RETORNAR valores o variables con base en otras propiedades o valores que ya tenemos en el v-model.
+
+
+
+<input type="text" v-model="name" />
+<input v-model="lastname"/>
+<p>{{fullName}}</p>
+
+computed:{
+	fullName(){
+		return `${this.name} ${this.lastname}`
+	}
+}
 
 
 
 
+--------------------------------
+WATCHERS
+
+Nos permiten ejecutar codigo a partir de que una propiedad de nuestro v-model, sin embargo estás no retornan un valor.
+Se enlazan directamente con una propiedad del v-model y por ello se tienen que llamar de la misma manera.
+
+Los watch reciben dos valores, el nuevo valor que se esta ingresando y guardan el valor anterior.
+
+
+data(){
+	return {
+		name:''
+	}
+}
+
+watch:{
+	name(newVal, oldVal){
+		console.log(newVal, oldVal)
+	}
+}
+
+
+
+----------------------------------------
+EVENTOS
+
+<input type="button" value="accion" @click="algo">
+
+methods:{
+	algo(){
+		console.log("Se activo algo")
+	}
+}
 
 
 
