@@ -3454,9 +3454,191 @@ Con una aplicacion de escritorio llamada Postman podemos hacer prueba de llamada
 
 
 
+----------------------------
+NOTA: Buscar bulma css
 
 
 
+----------------------------
+REACTIVIDAD E INMUTABILIDAD
+
+
+Data => Watcher => Render => Virtual DOM => ... Data
+
+"VUE NO PERMITE AGREGAR PROPIEDADES DINAMICAS A LOS OBJETOS"
+
+Cuando iniciamos un proyecto debemos declarar todas nuestras variables dentro de la funcion DATA() esto por que se renderizaran.
+
+Si las propiedades mutan, en esencia que pasen de:
+
+data(){
+	return {
+		person:{
+			name:'Angel'
+		}
+	}
+},
+methods:{
+	addProp(){
+		this.person.lastname ="Vasquez"
+	}
+}
+
+person es un objeto, sin embargo al aplicar addProp se agrega otra propiedad que al inicio del render no estaba contemplada y por ello no se mostraria en pantalla.
+<p>{{person}}</p> => Esto muestra el objeto persona pero solo mostraria el name y no el lastname
+
+
+Para arreglarlo tenemos varias opciones, una es usar la propiedad this.$set()
+Recibe varios parametros:
+		=> this.$set(objeto al que le quiero agregar una propiedad, 'nombre de la propiedad', "Valor de la propiedad")
+====>
+methods:{
+	addProp(){
+		this.$set(this.person, "lastname", "Vasquez")
+	}
+}
+
+
+Pero si queremos agregar varias propiedades lo correcto es aplicar:
+
+this.objetoAcambiar = Object.assign({}, this.objetoAcambiar, {prop1: valor1, prop2: valor2, ...})
+
+this.person = Object.assign({}, this.person, {prop1: 1, prop2: 2, lastname: "Vasquez"})
+
+
+
+--------------------------
+CICLO DE VIDA DE COMPONENTES
+
+Estos son Hooks=>
+
+new Vue()
+	-> beforeCreate: function(){}
+Observe Data
+Init Events
+	-> created: function(){}
+Compile template into render function
+	-> beforeMount: function(){}
+Create vm.$el and replace "el" whit ir
+	-> mounted: function() {}
+Mounted
+	-> updated: function() {} Cambio reflejado en pantalla
+	-> beforeUpdate: function() {} Cuando hay un cambio en la data
+		--- when data changes ---> Mounted
+	-> beforeDestroy: function() {}
+Teardown whatchers, child components and events listeners.
+
+Destroy
+ 	->destroyed: function(){}
+
+
+
+----------------------
+COMUNICACION ENTRE COMPONENTES PADRES E HIJOS
+
+Al crear un componente debemos (por buena practica) colocarle algun tipo de prefijo, si nuestra aplicacion es platzimusic y queremos hacer un componente para las canciones, podemos usar como nombre del componente:
+	name: 'PmTracks'
+
+Padre a hijo => funciona a traves de propiedades
+De hijo a padre => funciona a traves de eventos
+
+Cuando hacemos un componente hijo, él no deberia poder cambiarse asi mismo "sus" propiedades ya que éstas se las pasamos por parametro del componente padre y recordando la clase anterior, no podemos cambiar las propiedades de la data por cuestiones de mutabilidad.
+Por ello trabajamos con eventos.
+
+
+export default {
+		name:'component',
+		props:{
+			propiedad: type (ejemplo: String),
+			propiedad: {type: Obkect, required: true}
+		}
+
+}
+
+==================================
+Una buena practica para las direcciones de los componentes:
+En webpack.config=>
+ 	dentro de resolve => alias =>
+	'@': path.resolve(__dirname, './src')
+
+'./components/Artist.vue'
+'@/components/Artist.vue'
+
+Ayuda mucho para cuando estamos muy abajo en carpetas, para no escribir
+'../../components/Artist.vue'
+'@/components/Artist.vue'
+
+==================================
+
+Con la siguiente linea le pasamos los elementos de las canciones al componente que acabamos de crear, asi es como se comunica el padre con el hijo
+
+v-for="t in tracks"
+	pmtracks(:track="t")
+
+
+
+------------------------------
+COMUNICACION DE HIJOS HACIA PADRES
+
+Dentro del componente
+	<p @click="pulsado">Pulsar</p>
+
+
+methods:{
+	pulsado(){
+		this.$emit('pulsed', this.track.name)
+	}
+}
+
+
+Dentro del padre
+
+	<pmtracks @pulsed="escuchadordelhijo"></pmtracks>
+
+data(){
+	return {
+		idquemandaelhijo:''
+	}
+},
+methods:{
+	escuchadordelhijo(id){
+		console.log(id)
+		this.idquemandaelhijo = id
+	}
+}
+
+Para aplicar un CSS dinamico
+
+:class=" 'clase': logica"
+:class=" 'clase': valor1 == valor2 "
+:class=" var1 ? 'clase1' : 'clase2' "
+
+<pmtracks :class="{'is-active': track.id === idquemandaelhijo}" @pulsed="escuchadordelhijo"></pmtracks>
+
+
+
+
+
+-----------------------------------------
+SLOTS
+
+Inyectar desde el componente padre HTML con elementos en los componentes hijos
+
+Con esto hacemos HTML dinamico, de tal forma que en vez de pasarle al componente hijo los valores por data, lo hacemos directamente en el HTML y con ello logramos que sea un trabajo personalizado, se usa en modales, mensajes personales, etc.
+
+En componente hijo => Se llamará child
+	<template>
+		slot(name="title")
+		  h1 Titulo
+		slot(name="body")
+		  p Cuerpo
+	</template>
+
+En el padre
+	<child>
+		<h1 slot="title">Este es el mensaje que se mostrará en pantalla con todas las propiedades del elemento clild</h1>
+		
+	</clild>
 
 
 

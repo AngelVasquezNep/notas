@@ -214,6 +214,58 @@ sudo apt-get upgrade
 
 
 
+-------------
+GENERAL TERMINAL COMANDOS
+
+ls -l => informacion de permisos y dueños
+
+Archivo o fichero
+	- => archivo
+	d => directorio
+
+-rw-r--r-- =>Lo partiremos en tres componentes:
+
+- => archivo
+rw- => puede leer (r => read), puede escribir (w => write) - no puede ejecutar
+
+Los primeros 3 elementos corresponden al usuario dueño, los otros al grupo y el tercero a los demás usuarios.
+
+-{archivo o directorio}
+rw-{usuario}
+r--{grupo}
+r--{terceros}
+
+
+Para quitar permisos:
+	valores
+		r => 4
+		w => 2
+		x => 1
+		Sumamos los valores:
+			7 => todos los permisos
+			6 => rw-
+			4 => r--
+			0 => ---
+
+		Colocamos esos valores de la siguiente forma en la linea de comando:
+
+		chmod {valorusuario}{valorgrupo}{valorterceros} <file>
+		chmod 600 texto.txt
+			Asignamos solo permisos al usuario principal
+
+		Si colocamos chmod 000 passworld.txt
+		Asi guardaremos nuestras contraseñas super seguras y cuando querramos abrirlas solo tenemos que hacerlo cambiando desde la consola
+
+
+Lector de texto en terminal
+
+vi text.txt
+para escribir apretamos i
+para salir esc :wq
+para salir sin modificar esc :q!
+
+para ver texto => cat text.txt
+para ver mucho texto => less text.txt
 
 
 
