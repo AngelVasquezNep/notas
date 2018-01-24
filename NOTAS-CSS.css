@@ -7,16 +7,28 @@ DESARROLLO WEB ONLINE
 DESARROLLO WEB ONLINE
 Etiqueta		Función
 <header></header>	Cabecera de la página
-<section></section>	Dividir secciones
-<figure>
-<img src/>
-</figure>		“Encierra” una sección de 			imagen
 
-<nav></nav>		Menú
-    <ul></ul>		Lista desordenada
-      <li></li>	Elementos de la lista
-    <ol></ol>		Lista ordenada
-      <li></li>	Elementos de la lista 			ordenada
+<section></section>	Dividir secciones
+
+<figure>
+  <img src/>
+</figure>		“Encierra” una sección de imagen
+
+<nav>		           Menú
+
+    <ul>           Lista desordenada
+
+      <li></li>	   Elementos de la lista
+
+    </ul>
+    <ol>           Lista ordenada
+
+      <li></li>	   Elementos de la lista ordenada
+
+    </ol>
+
+</nav>
+
 <articule> </articulo>	Cada articulo tiene varios elementos, imágenes, títulos, descripción, etc.
 
 href=””	Son para los link’s. Si ponemos un id dentro del a página, podemos ponerlo “#[nombreID]” y el navegador ira a esa parte del documento.
@@ -36,15 +48,12 @@ icomoon
 
 
 
-
-
-
-font-size:		tamaño de fuente
-background:		color de fonto
-color: 			color de las letras
-text-decoration: none; 	sin sobrayado los enlaces
-text-decoration: underline; subrayado
-border-radius: 8px;	radio de las esquinas
+font-size:		     tamaño de fuente
+background:		     color de fonto
+color: 			       color de las letras
+text-decoration:   none; 	sin sobrayado los enlaces
+text-decoration:   underline; subrayado
+border-radius: 8px radio de las esquinas
 
 background: linear-gradient(to left/right, white, black) para DEGRADAR COLOR DENTRO DE UN ELEMENTO
 
@@ -52,20 +61,26 @@ list-style: none; (para quitar los cheklist del menu)
 
 font-weigth: 600; (negritas): 300; (normal)
 
-sombras
+--------
+SOMBRAS
+
 box-shadow: inset x y difuminado tamaño -->
 box-shadow: inset 10px 10px 10px red;
 box-shadow: inset  0px  5px  0px red;
 
-Para dar efecto al boton cuando se hace click sobre él
 
+EFECTO A BOTON
+
+CLICK =
 .button:active{
   transform: scale(.9);
 }
-O para cuando se hace foco sobre él (quizá con tap)
+
+FOCO =
 .button:focus{
   transform: scale(.9);
 }
+
 
 vertical-align: middle; alinear verticalmente
 
@@ -107,24 +122,31 @@ Tablas
 
 <table>
   <thead>
-     <tr>
-	<th>Titulo 1</th>
-	<th>Titulo 2</th>
-	<th>Titulo 3</th>
-     </tr>
+
+    <tr>
+      <th>Titulo 1</th>
+      <th>Titulo 2</th>
+      <th>Titulo 3</th>
+    </tr>
+
   </thead>
+
   <tbody>
-     <tr> FILA 1
-	<td>Contenido 1</td>
-	<td>Contenido 2</td>
-	<td>Contenido 3</td>
-     <tr>
-     <tr> FILA 2
-	<td>Contenido 1</td>
-	<td>Contenido 2</td>
-	<td>Contenido 3</td>
-     <tr>
+
+    <tr> FILA 1
+    	<td>Contenido 1</td>
+    	<td>Contenido 2</td>
+    	<td>Contenido 3</td>
+    </tr>
+
+    <tr> FILA 2
+    	<td>Contenido 1</td>
+    	<td>Contenido 2</td>
+    	<td>Contenido 3</td>
+    </tr>
+
   </tbody>
+
 </table>
 
 
@@ -150,16 +172,17 @@ SELECTORES
 
 
 
-/*Selector universal*/
+/Selector universal/
 *  {
   border: 1px;
 }
-/*Selector de etiqueta*/
+
+/Selector de etiqueta/
 body{
   background: #ffba54;
 }
 
-/*Selector descendente*/
+/Selector descendente/
 article h3 {
   color: #15876a;
 }
@@ -167,7 +190,8 @@ article h3 {
   font-size: 30px;
 }
 
-/*Selectores de clase: para ello se deben agregar clases en el HTML, siendo específicos, por ejemplo, a SOLO UN h3 ponerle class = "title-a"*/
+Selectores de clase: para ello se deben agregar clases en el HTML, siendo específicos, por ejemplo, a SOLO UN h3 ponerle class = "title-a"
+
 .title-a{
    background: #1f5f60;
 }
@@ -177,7 +201,7 @@ article h3 {
 }
 
 
-/*Selector de id*/
+/Selector de id/
 #header{
   background: orange;
 }
@@ -200,10 +224,10 @@ margin
 
 
 *  {
-/*Propiedades de las cajas*/
+/Propiedades de las cajas/
   width: tamaño;
   height: tamaño;
-  padding: 10px; /*espacio entre el contenido y el borde*/
+  padding: 10px; /Espacio entre el contenido y el borde/
   Para ser más especificos
   padding-top: ;
   padding-right: ;
@@ -249,6 +273,9 @@ Al agregar el href"mailto:" junto con el correo, el sistema automaticamente pres
 
 FORMULARIOS
 
+Van dentro de una etiqueta que se llama <form></form>
+
+
 <label for="text1"></label> (Es lo que acompaña al espacio del formulario, como "nombre", "edad", "escribe algo chido", etc.)
 
 Eso sirve para vincular el label con el input y que cuando lo seleccionemos se haga focus sobre el área de escritura
@@ -264,22 +291,22 @@ atributo -placeholder="pon tu nombre" (Es para colocer el valor por defecto del 
 </label>
 Con el name forzamos a que solo se pueda elegir una opcion de las disponibles.
 
-opcion multiple
+
+/Opcion multiple/
 <label for="intereses">
  <input type="checkbox" id="intereses"  name="intereses" />
 </label>
 
-Caja grande de comentarios
+
+/Caja grande de comentarios/
 <label for="comentarios">Comentarios
   <textarea name="comentarios" id="comentarios" cols="30" rows="5" />
 </label>
 
-Boton enviar
+/Boton enviar/
 <input type="submit" value="lo que quiero que diga el boton" />
 
 NOTA: A TODOS HAY QUE PONERLES VALUE
-
-
 
 
 
@@ -297,11 +324,10 @@ Para darle tamaño input text | NO SE PUEDE es a una etiqueta textarea
 
 //////////////////////////////////////////////////
 
+PSEUDOELEMENTOS
 
-Pseudoelementos
 
-
-para agregar otro elemento al contenido de HTML, algo como un simbolo especial, se usa:
+Para agregar otro elemento al contenido de HTML, algo como un simbolo especial, se usa:
 
 .menu li: after{
 	content: "|";
@@ -313,7 +339,7 @@ En este ejemplo el elemento | aparecera despues de lo que tenga el li de menu.
 
 //////////////////////////////////////////////////
 
-Portada
+PORTADA
 
 .portada{
   background-image: url("images/backgrund.png");
@@ -325,7 +351,7 @@ cvander
   height: 100vh;
   width: 100vw;
   background-image: url("images/backgrund.png");
-  (background-position: alineado horizontalmente +                         alineado verticalmente)
+  (background-position: alineado horizontalmente + alineado verticalmente)
   background-position: center bottom;
   background-repeat: no-repeat;
 
@@ -334,7 +360,7 @@ cvander
 
 //////////////////////////////////////////////////
 
-sticky footer
+STICKY FOOTER
 
 Para que el footer quede hasta abajo aun cuando el contenido no sea el suficiente.
 
@@ -345,21 +371,6 @@ colocarle a body{
 
 
 flex: 1; (colocado a la seccion que queremos ocupe el espacio sobrande)
-
-
-
-
-
-
-
-
-
-
-//////////////////////////////////////////////////
-//////////////////////////////////////////////////
-//////////////////////////////////////////////////
-//////////////////////////////////////////////////
-
 
 
 
@@ -429,7 +440,7 @@ Notas
 
 
   -justify-content: flex-start, flex-end, CENTER, space-around, space-between,
-Distribucion del contenido
+    Distribucion del contenido
 
 
   -flex-wrap: wrap; (para que no se redimensione, sino que se coloquen por debajo)
@@ -437,7 +448,7 @@ Distribucion del contenido
   -flex-direction: column, wrap, (la direccion de los elementos, en fila o columna)
 
   -align-items: center;
-Alineado de los elementos.
+    Alineado de los elementos.
 }
 
 
@@ -461,7 +472,7 @@ CODEPEN.IO
   display: flex;
   justify-content: center;
   position: relative;
-  margin: 0 auto;
+  margin: 0 auto; /PARA CENTRAR CONTENIDO/
   flex-wrap: wrap;
 }
 
@@ -520,8 +531,7 @@ CODEPEN.IO
 
 
 
-Transiciones y transformaciones con CSS
-
+/Transiciones y transformaciones con CSS/
 
 
 Propiedades que podemos cambiar
@@ -577,7 +587,7 @@ Y DESPUES PARA MODIFICARLOS CON EL TRANSITION
 
 
 
-Transformaciones
+/Transformaciones/
 
 
 Tenemos que agregar a la clase un “transition” para indicar el tiempo y en el hover colocar cualquiera de las siguientes propiedades:

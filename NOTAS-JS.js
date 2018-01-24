@@ -3005,7 +3005,11 @@ NOTA: tuve problemas cuando estuve en Linux, node me marcaba algo raro, solo lo 
 
 
 ------- Sumando Stylus y Pug ----------------
-Basura
+
+npm install --save-dev pug pug-loader
+
+
+
 
 
 
@@ -3556,7 +3560,7 @@ export default {
 }
 
 ==================================
-Una buena practica para las direcciones de los componentes:
+Una buena practica para las direcciones de los componentes es generar un alias:
 En webpack.config=>
  	dentro de resolve => alias =>
 	'@': path.resolve(__dirname, './src')
@@ -3586,7 +3590,7 @@ Dentro del componente
 
 methods:{
 	pulsado(){
-		this.$emit('pulsed', this.track.name)
+		this.$emit('pulsed', this.track.id)
 	}
 }
 
@@ -3637,7 +3641,6 @@ En componente hijo => Se llamará child
 En el padre
 	<child>
 		<h1 slot="title">Este es el mensaje que se mostrará en pantalla con todas las propiedades del elemento clild</h1>
-		
 	</clild>
 
 
