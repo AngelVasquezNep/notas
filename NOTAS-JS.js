@@ -1155,7 +1155,7 @@ get('https://www.swapi.co/api/people/1/', function onResponse(err, luke){
 	console.log('luke', luke)
 })
 
-
+(){
 Este ejemplo nos llevará a un problema del CALLBACK HELL ya que dentro de cada request haríamos otro request, por ejemplo, hicimos otro request para conocer el planeta donde vivia Luke, pero si tambien queremos saber su especie, sus vehiculos o lo que sea, seran muchas llamadas anidadas.
 
 

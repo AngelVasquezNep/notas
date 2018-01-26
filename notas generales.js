@@ -1,10 +1,9 @@
-========================NOTAS============================
+NOTAS
 
 
 
-=========================================================
-												 GIT
-=========================================================
+GIT
+
 
 zsh "Comando especial para ver git:(master)"
 
@@ -91,7 +90,7 @@ git checkout -b <new-branch-name> ("crear una rama y movernos a ella")
 En master -mezclar-
 
 git merge <name-branch>
-
+{
 Si hay conflicto, hago los cambios y un nuevo commit ("sin ponerle mensaje")
 
 
@@ -283,7 +282,7 @@ cat > sample.txt ("para crear un archivo y escribir dentro de él")
 
 
 "Instalar paquetes deb"
-dpkg -i paquete.deb
+sudo dpkg -i paquete.deb
 
 
 
@@ -300,7 +299,7 @@ dpkg -i paquete.deb
 
 
 --------------------------------
-    CURSO COMANDOS
+    CURSO TERMINAL COMANDOS
 --------------------------------
 
 pwd		= "dónde estoy ?"
