@@ -472,7 +472,8 @@ CODEPEN.IO
   display: flex;
   justify-content: center;
   position: relative;
-  margin: 0 auto; /PARA CENTRAR CONTENIDO/
+  /*PARA CENTRAR CONTENIDO*/
+  margin: 0 auto; 
   flex-wrap: wrap;
 }
 

@@ -2385,7 +2385,7 @@ www.rafaelerasmo.com
 
 
 
-//
+
 
 
 
@@ -2393,6 +2393,7 @@ www.rafaelerasmo.com
 -----------------------------------------------------------
       			NOTAS GENERALES DE JS
 -----------------------------------------------------------
+
 
 -Como poner un input range
 
@@ -2484,20 +2485,6 @@ R: "ola amigo"
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 --------------------------------------------------------
 EVENTOS DEL DOM
 
@@ -2506,6 +2493,45 @@ EVENTOS táctiles (TouchEvent): touchstart, touchmove, touchend, touchcancel
 EVENTOS del teclado (KeyboardEvent): keydown, keypress, keyup
 EVENTOS de formularios: focus, blur, change, submit
 EVENTOS de la ventana: scroll, resize, hashchange, load, unload
+
+
+
+
+
+
+
+---------------------------
+Eventos del DOM
+
+window.addEventListener('visibilitychange', ()=>{
+    document.hidden ? console.log("Estoy dentro de la pestaña") : console.log("Cambie de pestaña") 
+  })
+
+window.addEventListener('visibilitychange', ()=>{
+	if(document.visibilityState == 'prerender'){
+		console.log("El caso de Prerender")
+	}else if(document.visibilityState == 'hidden'){
+		console.log("El caso de Hidden")
+	}else if(document.visibilityState == 'visible'){
+		console.log("El caso de Visible")
+	}
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -3376,7 +3402,7 @@ Las propiedades computadas nos sirven para generar/RETORNAR valores o variables 
 
 computed:{
 	fullName(){
-		return `${this.name} ${this.lastname}`
+		return "`${this.name} ${this.lastname}`"
 	}
 }
 

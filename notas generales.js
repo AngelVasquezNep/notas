@@ -202,7 +202,7 @@ git push origin <rama> --tags
 --------
 LINUX
 
--Atualizar paquetes
+-Actualizar paquetes
 
 sudo apt-get update
 sudo apt-get upgrade
