@@ -1161,6 +1161,12 @@ Para quitar y poner el boton, podemos agregarle el display: none; y en el media 
 
 
 
+$nombre-de-variable.classList.toggle('elemento que quiero hacer toggle')
+$menu.classList.toggle('active')
+
+
+ 
+
 
 
 

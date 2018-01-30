@@ -55,7 +55,7 @@ console.log(`el área de un triangulo de ${base} y altura ${height} es: ${triang
 
 	const triangleArea = (base, height) => base * height / 2;
 }
-
+ 
 let radio = 5;
 let areaCirc = (radio) => Math.PI*Math.pow(radio,2);
 
