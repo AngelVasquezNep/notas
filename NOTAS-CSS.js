@@ -358,6 +358,21 @@ cvander
 }
 
 
+
+
+
+Si queremos que una imagen este fija en el fondo: 
+
+.imagenSeleccionada{
+  background: url('imagen.png'), #000;
+  background-size: cover;
+  background-attachment: fixed; => Con esto la imagen se quedara fina de fondo, significa que si 
+  se hace scroll no se movera.
+}
+
+
+
+
 //////////////////////////////////////////////////
 
 STICKY FOOTER
