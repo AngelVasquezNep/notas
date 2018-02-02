@@ -460,7 +460,7 @@ Notas
 
   -flex-wrap: wrap; (para que no se redimensione, sino que se coloquen por debajo)
 
-  -flex-direction: column, wrap, (la direccion de los elementos, en fila o columna)
+  -flex-direction: column, row, (la direccion de los elementos, en fila o columna)
 
   -align-items: center;
     Alineado de los elementos.

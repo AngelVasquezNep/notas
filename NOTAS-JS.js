@@ -3676,10 +3676,34 @@ En el padre
 
 
 
+---------------------------------------------
+
+TRANSICIONES Y ANIMACIONES 
+
+v-enter: 					=> Estirar cuando está entrando la transicion
+v-enter-active: 	=> Mientras está activa 
+v-enter-to: 			=> Mientras se está yendo
+v-leave: 					=> Empezando a irse 
+v-leave-active: 	=> Ya se fue y está activo
+v-leave-to: 			=> Cuando ya finalizó todo 
+
+crear una clase 
+
+.move-enter-active, .move-leave-active{
+	transform: translateX(0);
+	transition: all .5s linear; 
+}
+
+.move-enter, .move-leave-to{
+	transform: translateX(100%);
+	
+}
 
 
+En el modulo que querramos aplicarlo
 
-
+transition(name="move")
+	elemento a aplicar
 
 
 
