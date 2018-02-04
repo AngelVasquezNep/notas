@@ -1,0 +1,223 @@
+Notas del curso de Administración de Servidores Linux
+
+Para iniciar abrimos los archivos con el comando vim
+
+Cuando se abre el doc, entramos al modo de COMANDOS
+=> Ahí podemos usar:
+ 
+  -La letra "i" => de insetar
+  -Regresamos al modo de comandos con esc
+
+
+
+Archivo con configuración básica de los repositorios:
+
+=> more /etc/apt/sources.list
+
+
+Siempre que vayamos a descargar un programa, debemos actualizar las listas de los repositorios con:
+
+=> apt-get update
+
+apt-get es un manejador de paquetes
+
+apt-get install paquete
+
+apt-get remove paquete
+
+aptitude tambien lo es:
+	/ para buscar
+	+ para agregar 
+	- para no agregar
+	= para mantener
+
+
+sudo dpkg -P paquete => BORRA TODO LO DEL PAQUETE
+
+
+Compresión y empaquetado
+
+Empaquetar => Colocar muchos archivos y directorios en uno solo
+Compresión => Un solo archivo comprimido
+
+Programa tar => Empaquetar
+Programa gzip => Comprimir
+
+
+tar cvf [direccion de guardado]/nombrearchivo.tar [directorio a guardar] 
+tar cvf ~/Escritorio/archivo.tar pruebas/
+
+Como nota, debemos estar situados una en la carpeta "padre" de la carpeta "hijo" que querramos guardar, por ejemplo, para empaquetar pruebas: ... pruebasgenerales/pruebas/... debemos estar en pruebasgenerales y desde ahí correr el tar cvf...
+
+para comprimir el archivo (o cualquer otro) usariamos: 
+
+gzip -9r pruebas.tar
+
+El archivo pasa de pruebas.tar a pruebas.tar.gz
+
+Para descomprimirlo  
+
+tar xvfz pruebas.tar.gz
+
+SI EL ARCHIVO NO FUERA .TAR se haría de la siguiente forma: 
+
+tar xvf archivo.gz
+
+SIN LA Z
+
+
+La compresión tar mantiene permisos, grupos, etc.
+
+
+COMPILAR PAQUETE
+
+apt-get install module-assistant
+
+m-a prepare 
+
+vim /etc/apt/sources.list
+
+apt-get source -b git 
+
+apt-get build-dep [programa] => Para instalar todas las dependencias que necesita el programa
+
+
+DOCUMENTACIÓN DE PROGRAMAS
+
+apt-cache search [elemento a buscar] => Para buscar dentro del cache/metadata del manejador de paquetes.
+
+cd /usr/share/doc => Aquí estan los programas, podemos entrar a ellos y en sus carpetas buscar algun readme.
+
+Para leer un archivo comprimido (Sin descomprimirlo) 
+
+zless README.gz
+
+También podemos usar el programa 
+
+man [programa]
+
+
+
+ARQUITECTURA
+
+Todo en linux son archivos o directorios
+
+/		=> RAIZ
+/home		=> Archivos que tiene cada usuario (en su usuario)
+/lib		=> Librerias del sistema
+/mnt		=> CD, USD 
+/media		=> CD, USB
+/opt		=> Programas instalados de terceros
+/root		=> Carpeta exclusiva para superusuario
+/bin 		=> Archivos binarios (son TODO lo que se puede ejecutar en el sistema)
+/sbin		=> Archivos binarios del superusuario
+/usr		=> Programas que vienen por defecto
+/var		=> Configuración de backup, cache, logs.
+/var/loh	=> logs
+
+/dev		=> Todo lo que tiene que ver con dispositivos
+
+Directorio más importante:
+
+/etc		=> Archivos de configuracion del sistema
+
+/boot		=> Configuracion del sector de arranque
+
+
+
+
+PARTICIONES
+
+
+fdisk -l	=> Listar los discos que tenemos
+
+
+fdisk /dev/particion => Con esto entramos a una particion y podemos trabajarla con los siguientes comandos...
+
+Solo 4 particiones primarias 
+Muchas logicas
+ó gpt
+
+
+fdisk
+  d	delete a partition
+  F	list free unpartitioned space
+  l	list known partition types
+  n	add a new partition
+  p	print the partition table
+  t	change a partition type
+  v	verify the partition table
+  i	print information about a partition
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Encriptar Datos
+
+=> vim password ó el nombre que querramos
+
+Dentro escribimos nuestras contraseñas...
+
+Para encriptar usamos:
+
+gpg -ca "archivo" 
+
+-Se genera automaticamente un archivo ó
+
+gpg -ca "archivo" "archivoencriptado"
+
+-Asignamos el nombre del archivo ó
+
+Posterior nos pide una contraseña 
+
+Para abrirlo usamos:
+
+gpg -d archivo
+
+

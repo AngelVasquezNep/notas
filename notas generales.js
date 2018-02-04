@@ -215,9 +215,52 @@ sudo apt-get upgrade
 
 	dpkg --list
 
+-Ver comandos de un programa 
+
+	dpkg -L [programa]
+
+
 Desinstalar un programa
 
 	sudo apt-get --purge remove <nombredelprograma>
+
+
+Elimina del cache los paquetes .deb con versiones 
+anteriores a los de los programas que tienes instalados.
+
+	sudo apt-get autoclean
+
+
+Elimina todos los paquetes del cache. El único inconveniente 
+que podría resultar es que si quieres reinstalar un paquete, tienes que volver a descargarlo.
+
+	sudo apt-get clean
+
+Borra los paquetes huérfanos, o las dependencias que quedan 
+instaladas después de haber instalado una aplicación y luego eliminarla, 
+por lo que ya no son necesarias.
+
+	sudo apt-get autoremove
+
+
+
+
+
+Descargar Torrent
+
+ctorrent archivo.torrent
+
+
+
+
+
+
+
+
+
+
+
+
 
 -------------
 GENERAL TERMINAL COMANDOS
@@ -311,6 +354,10 @@ ls -lh 		= enlistar elementos en valores "humanos"
 ls -lhS 	= Ordenar los elementos
 
 du -h -d 1 	= mostrar cuanto pesa cada carpeta
+
+df -h => tamaño de disco duro | espacio que ocupa cada directorio
+
+
 clear		= Limpiar
 cd ..		= Regresar directorio
 mkdir [NOMBRE]  = Crear nuevo directorio
