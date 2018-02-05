@@ -540,7 +540,8 @@ function suma(n1, n2, n3, n4, n5){
 suma(2, 3, 4, 3, 1);
 
 spread operator
- para tener parametros variables (cantidad) usamos (...nombreQueQuerramos) dentro del parametro de la funciona
+ para tener parametros variables (cantidad) usamos (...nombreQueQuerramos) 
+ dentro del parametro de la funciona
  Esto hara que ...numeros nos regrese un array
 
  The reduce() method applies a function against an accumulator and each element in the array (from left to right) to reduce it to a single value.{}

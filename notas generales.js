@@ -243,6 +243,8 @@ por lo que ya no son necesarias.
 	sudo apt-get autoremove
 
 
+Para buscar dentro del cache/metadata del manejador de paquetes.
+=>apt-cache search [elemento a buscar] 
 
 
 

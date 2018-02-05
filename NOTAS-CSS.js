@@ -838,6 +838,18 @@ $elemento.style.transform = 'rotate('+ window.scrolldeg+'deg)'
 
 
 
+Con la etiqueta <pre> </pre> podemos escribir información JSON y que se 
+respete la indentacion.
+
+En el css usamos 
+
+pre{
+  word-wrap: break-word;
+  white-space: pre-wrap;
+}
+
+
+
 
 
 
