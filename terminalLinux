@@ -132,7 +132,7 @@ PARTICIONES
 fdisk -l	=> Listar los discos que tenemos
 
 
-fdisk /dev/particion => Con esto entramos a una particion y podemos trabajarla con los siguientes comandos...
+fdisk /dev/sda => Con esto entramos a una particion y podemos trabajarla con los siguientes comandos...
 
 Solo 4 particiones primarias 
 Muchas logicas
@@ -150,7 +150,9 @@ fdisk
   i	print information about a partition
 
 
+2048 1050623
 
+1953525134
 
 
 
