@@ -103,12 +103,21 @@ FOCALIZAR ELEMENTO
 
 
 .textarea{
-  outline:none; (se pone para que cuando se haga focus sobre el espacio de texto No se ponga azul su caja)
+  outline:none; (se pone para que cuando se haga focus sobre el espacio de texto No se ponga el recuadro azul su caja)
 }
 
 input:focus, textarea:focus{
   background: lightgray; (con esto el textarea cambia de color cuando hacemos foco sobre él)
 }
+
+
+
+
+
+
+Para cambiarle el titulo al documento
+
+document.title = "HOLA MAMA"
 
 
 
@@ -413,7 +422,7 @@ FLOAT
 
 Para que flote dentro de su “caja” a la izquierda, derecha, etc.
 
-	Float: rigt; …
+	Float: right; …
 
 
 
@@ -1821,5 +1830,252 @@ EVENTOS DEL DOM
 EVENTOS del ratón (MouseEvent): mousedown, mouseup, click, dblclick, mousemove, mouseover, mousewheel, mouseout, contextmenu
 EVENTOS táctiles (TouchEvent): touchstart, touchmove, touchend, touchcancel
 EVENTOS del teclado (KeyboardEvent): keydown, keypress, keyup
-EVENTOS de formularios: focus, blur, change, submit
-EVENTOS de la ventana: scroll, resize, hashchange, load, unload
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+----------------------------------------
+----------------------------------------
+----------------------------------------
+
+          Curso de Foundation 
+
+
+----------------------------------------
+----------------------------------------
+----------------------------------------
+
+
+
+
+
+
+
+
+
+
+row => Fila 
+column => Columna
+expanded => Usar el 100% de la pantalla, se usa antes de row
+
+small-1 ... small-6 ... small-12
+medium-1 ... medium-6 ... medium-12
+large-1 ... lager-6 ... large-12
+
+medium-offset-1 => Recorremos, desde medium, un espacio (de los 12 disponibles) a la derecha.
+
+-Con esto le quitamos el padding a sus hijos pequeños y medianos pero a los grandes no.
+<div class="row small-collapse large-uncollapse"> ..  
+
+
+En pequeños ocupa todo el espacio, pero en medianos y grandes se
+divide el espacio entre los elementos que haya:
+
+<div class="column small-12 medium-expand"> Hola </div>
+<div class="column small-12 medium-expand"> Hola </div>
+<div class="column small-12 medium-expand"> Hola </div>
+<div class="column small-12 medium-expand"> Hola </div>
+
+ó (MEJOR)
+
+<div class="row medium-unstack"> => Con esto le decimos que desde medium No los aplile
+...
+
+
+-Acomodar una fina antes que otra
+<div class="row" >
+  <div class="column medium-order-2">Soy la fila 1</div>
+  <div class="column medium-order-1">Soy la fila 2</div>
+</div>
+
+
+Para hacer que una columna ocupe solamente el espacio de su contenido: 
+<div class="column shrink">...
+
+
+-Centrar texto y alinear columnas
+
+<div class="row text-center align-center">  ...
+<div class="row text-center align-right">   ...
+<div class="row text-center align-left">    ...
+<div class="row text-center align-justify"> ...
+<div class="row text-center align-spaced">  ... 
+
+-Alinear verticalmente 
+
+<div class="row align-middle">              ...
+<div class="row align-botton">              ...
+
+-Alinear verticalmente a una sola columna 
+
+<div class="column align-self-middle">      ...
+<div class="column align-self-bottom">      ...
+
+
+Incorporar Iconos
+
+https://zurb.com/playground/foundation-icon-fonts-3
+
+Descargar, colocar en una carpeta a la que llamemos icons 
+Vincular la hoja foundatio-icons.css a nuestra pág principal
+<link rel="stylesheet" href="icons/foundation-icons/foundation-icons.css">
+Listo !
+
+
+Panel pequeño (Podría servir para un titulo)
+
+<div class="callout"> ...
+
+Menú
+<div>
+  <ul class="menu align-center"> ó <ul class="menu vertical">
+    <li>
+    <li class="active"> => Este elemento estará activado con un color distinto
+    <li>
+
+Menú con texto e iconos / y que los iconos estén arriba
+<div >
+  <ul class="menu icon-top align-center">
+    <li><a href="#"><span class="icono">...
+
+Sub-Menú
+<div >
+  <ul class="menu align-center dropdown" meta-dropdown-menu>
+    <li>
+      <a href="#"><span class="icono">...  
+      <ul class="menu">
+        < Aqui va el submenu> ...
+      </ul>
+
+Botones
+  <button class="button">                           ... Normal
+  <button class="hollow button">                    ... Sin background
+  <button class="button expanded large">            ... Grande
+
+  Colores 
+
+    <button class="button disabled">                  
+    <button class="button secundary ">                  
+    <button class="button success ">                  
+    <button class="button alert ">                  
+    <button class="button warning ">                  
+
+
+TABS
+  Url's ROUTER
+    Para navegar dentro de la misma página sin recargar
+
+<section>
+  <h3>Titulo</h3>
+  <ul id="menu-tabs" class="tabs" data-tabs>
+    <li class="tabs-title">
+      <a href="#">Subpágina 1</a>
+    </li>
+    <li class="tabs-title">
+      <a href="#">Subpágina 2</a>
+    </li>
+    <li class="tabs-title">
+      <a href="#">Subpágina 3</a>
+    </li>
+  </ul>
+  {/* Como podemos tener varios TABS, en data-tabs-content va el ID del 
+      los elementos a los que les queremos hacer referencia */}
+  <div class="tabs-container" data-tabs-content="menu-tabs">
+      <div id="panelViernes" class="tabs-panel is-active">
+        Contenido del panel 1
+      </div> 
+      <div id="panelSabado" class="tabs-panel">
+        Contenido del panel 2
+      </div> 
+      <div id="panelDomingo" class="tabs-panel ">
+        Contenido del panel 3
+      </div> 
+  </div>
+
+</section>
+
+
+
+
+Centrar TABS
+
+<ul id="menu-tabs" class="tabs text-center" meta-tabs>
+
+  .tabs-title{
+    display: inline-block;
+    float: none;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{/*  */}

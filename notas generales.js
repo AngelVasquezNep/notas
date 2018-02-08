@@ -14,6 +14,9 @@ Angeles7
 git config --global user.name Angel
 git config --global user.email
 
+git config --global core.editor vim
+
+
 git init
 git add <file>
 git rm --cached <file> ("Remover de git")
