@@ -1823,13 +1823,99 @@ GENERAR VARIABLES EN CSS
 
 
 
-
------------------------------------
+--------------------------------------------------------
 EVENTOS DEL DOM
 
 EVENTOS del ratón (MouseEvent): mousedown, mouseup, click, dblclick, mousemove, mouseover, mousewheel, mouseout, contextmenu
 EVENTOS táctiles (TouchEvent): touchstart, touchmove, touchend, touchcancel
 EVENTOS del teclado (KeyboardEvent): keydown, keypress, keyup
+EVENTOS de formularios: focus, blur, change, submit
+EVENTOS de la ventana: scroll, resize, hashchange, load, unload
+
+
+
+
+
+
+
+---------------------------
+Eventos del DOM
+
+window.addEventListener('visibilitychange', ()=>{
+    document.hidden ? console.log("Estoy dentro de la pestaña") : console.log("Cambie de pestaña") 
+  })
+
+window.addEventListener('visibilitychange', ()=>{
+	if(document.visibilityState == 'prerender'){
+		console.log("El caso de Prerender")
+	}else if(document.visibilityState == 'hidden'){
+		console.log("El caso de Hidden")
+	}else if(document.visibilityState == 'visible'){
+		console.log("El caso de Visible")
+	}
+})
+
+
+
+---------------------------------
+
+
+AnimatedScrollTo with jquery
+
+    document.getElementsByTagName('button')[0].onclick = function () {
+      scrollTo(document.body, 0, 1250)   
+    }
+        
+    function scrollTo(element, to, duration) {
+        let start = element.scrollTop,
+            change = to - start,
+            currentTime = 0,
+            increment = 20;
+            
+        let animateScroll = function(){        
+            currentTime += increment
+            let val = Math.easeInOutQuad(currentTime, start, change, duration);
+            element.scrollTop = val
+            if(currentTime < duration) {
+                setTimeout(animateScroll, increment)
+            }
+        };
+        animateScroll()
+    }
+
+    //t = current time
+    //b = start value
+    //c = change in value
+    //d = duration
+
+    Math.easeInOutQuad = function (t, b, c, d) {
+      t /= d/2
+      if (t < 1) return c/2*t*t + b
+      t--
+      return -c/2 * (t*(t-2) - 1) + b
+    }
+
+
+
+
+
+
+---------------------------------------------------
+---------------------------------------------------
+---------------------------------------------------
+
+
+Eventos de WINDOW
+
+---------------------------------------------------
+---------------------------------------------------
+---------------------------------------------------
+
+-Colocamos las coordenadas a las que quremos ir 
+
+window.scroll(x-coord, y-coord)
+
+window.scrollTo(x-coord, y-coord)
 
 
 
@@ -1838,7 +1924,29 @@ EVENTOS del teclado (KeyboardEvent): keydown, keypress, keyup
 
 
 
+--------------------------------------------------
+Cambiar la URL de una imagen de forma dinamica
 
+<img id="imageprueba" src="" alt="">
+
+const imagenes = [
+      "http://random-international.com/wp-content/uploads/2012/10/RR-home-img2.jpg",
+      'https://www.w3schools.com/w3css/img_fjords.jpg',
+      'https://media.istockphoto.com/photos/plant-growing-picture-id510222832?k=6&m=510222832&s=612x612&w=0&h=Pzjkj2hf9IZiLAiXcgVE1FbCNFVmKzhdcT98dcHSdSk='
+      ]
+
+    const image = document.getElementById('imageprueba')
+    image.src = imagenes[0]
+    
+    
+    let i = 0
+    setInterval(function(){
+      i++
+      if(i == imagenes.length){
+        i = 0
+      }
+      image.src = imagenes[i]
+    }, 5000)
 
 
 
