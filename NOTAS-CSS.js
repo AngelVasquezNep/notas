@@ -328,6 +328,15 @@ Para darle tamaño input text | NO SE PUEDE es a una etiqueta textarea
 
 
 
+Para que un formulario no valide el correo de imediato colocamos novalidate
+
+
+<form action="" method="" novalidate>
+  ....
+
+
+
+
 
 
 
@@ -2148,26 +2157,90 @@ Centrar TABS
 
 
 
+Tablas
+
+<div class="row">
+  <div class="column">
+    <ul class="pricing-table">
+      <li class="title">PLATINUM</li>
+      <li class="price">$120.00</li>
+      <li class="description">An awesome description</li>
+      <li>42 Rad Features</li>
+      <li>7GB of Power</li>
+      <li><a class="button" href="#">Buy Now</a></li>
+    </ul>
+  </div>
+</div>
+
+
+Contenido dinamico 
+
+Básicamente son media quereris...
+
+<img data-change="[url-de-la-imagen, small], [url-de-la-imagen, medium], [url-de-la-imagen, large]">
+
+
+Formularios 
+
+Para que un formulario no se valide le agregamos novalidate
+<form ... novalidate data-abide>
+
+Y al error le colocamos data-abide-error
+
+  <div data-abide-error class="row column small-12 medium-6 text-center" style="display:none" >
+    <p><i class="fi-alert"></i> Ingresó un correo no válido</p>
+  </div>
+
+
+-NAVEGACION 
+
+  Agregamos un nav a nuestro menú
+
+  <nav data-magellan>
+    ...
+  </nav>
+
+  Y a cada elemento al que queremos ir (ID) le ponemos 
+
+  <div id="link1" data-magellan-target="link1">
 
 
 
 
+- Menu STICKY
+
+    <section id="scrollSticky" data-sticky-container>
+      <div class="data-sticky" data-sticky data-options="marginTop: 0;" data-sticky-on="small" data-top-anchor="scrollSticky">
+        <nav id="menu-container" data-magellan >
+          <ul class="dropdown menu align-spaced" data-dropdown-menu>
+            <li><a href="#tickets-container"><span class="fi-ticket"></span> Ticket</a></li>  
+            <li>
+              <a href="#lineup-container"><span class="fi-flag"></span> Lineup</a>
+              <ul class="menu submenu-container">
+                <li><a href="#panelViernes">Viernes</a></li>
+                <li><a href="#panelSabado">Sábado</a></li>
+                <li><a href="#panelDomingo">Domingo</a></li>
+              </ul>
+            </li>  
+            <li><a href="#info-container"><span class="fi-info"></span> Info</a></li>  
+            <li><a href="#suscription-container"> Suscríbite</a></li>  
+          </ul>
+        </nav>
+      </div> 
+    </section>
+    
 
 
 
+- Obtener los correos de un formulario sin usar Backend 
 
+formspree.io
 
-
-
-
-
-
-
-
-
-
-
-
+<form action="https://formspree.io/your@email.com" method="POST">
+    <input type="text" name="name">
+    <input type="email" name="_replyto">
+    <input type="submit" value="Send">
+</form>
 
 
 

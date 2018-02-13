@@ -687,6 +687,19 @@ date => imprime la hora
 
 
 
+======================================================
+                    DEPLOY NOW
+======================================================
+
+
+comandos:
+
+now
+
+cambiar nombre de la página 
+
+now alias nombre-pág-12uibjwqnd982.now.sh nombre-pág.now.sh
+
 
 
 
