@@ -1987,7 +1987,7 @@ const imagenes = [
 ----------------------------------------
 ----------------------------------------
 
-          Curso de Foundation 
+         "CURSO DE FOUNDATION" 
 
 
 ----------------------------------------
@@ -2248,7 +2248,231 @@ formspree.io
 
 
 
+// "FIN DE FOUNDATION"
 
+
+
+
+
+
+
+
+
+
+
+
+====================================================
+|                                                  |
+|             "ANIMACIONES PARA LA WEB"            |
+|                                                  |
+====================================================
+-                                    14/FEB/2018   -
+
+
+- Animación es genearar sensación de movimiento 
+- Las animaciones son parte natural de las interfaces
+- Las animaciones son una forma natural de enseñanza
+- Las animaciones ayudan a mejorar el engagement 
+- CSS3 Transiciones | Transformaciones | Animaciones
+
+
+
+
+TRANSICIONES
+
+transition-property: Propiedad a cambiar
+transition-duration: Tiempo de la animación 
+transition-delay: El tiempo que tarda en ejecutarse la animación
+transition-timing-function: Para darle suavidad a la transicion (ease)
+
+transition: property duration delay timing;
+transition: width 1s 1s ease;
+transition: all 1s ease; => Todas las propiedades 
+
+
+-Cambiar varios elementos hijos:
+
+.padre:hover .hijo{
+  color: red;
+}
+
+
+TRANSFORMACIONES
+
+- Rotar
+- Sesgar
+- Posicionar
+- Redimencionar 
+
+transform: rotate(45deg)
+transform: skew(15deg) Sesgar
+transform: translate(100px)
+transform: scale(.5)
+
+Si tenemos más de una transformación, las escribimos en una sola linea: 
+
+transform: rotate(45deg) skew(10deg) translate(100px)
+
+
+-ROTACIONES
+
+PODEMOS ROTAR EN UN SOLO EJE !!!!!
+
+transform: rotateX(45deg)
+transform: rotateY(45deg)
+transform: rotateZ(45deg) 
+transform: rotate3D(X, Y, Z, grados)
+transform: rotate3D(1, 0, 0, 45deg)
+transform: rotate3D(0, 1, 0, 45deg)
+
+
+-TRASLACION
+
+transform: translate(x)
+transform: translate(100px)
+transform: translate(x, y)
+transform: translate(100px, -100px)
+transform: translateX(x)
+transform: translateY(y)
+
+  Eje Z
+
+  Para que funcione, le tenemos que agregar al padre una "perspectiva" (fondo)
+
+  .padre || body{
+    perspective: 200px;
+    perspective-origin: x y; PUNTO DE FUGA
+    perspective-origin: center; 
+    perspective-origin: top left; 
+    perspective-origin: bottom left; 
+  }
+
+  .hijo{
+    transform: translateZ(z);
+    transform: translate3d(x, y, z)
+  }
+
+
+ESCALA
+
+transform: scale(all)
+transform: scale(x, y)
+
+
+SESGADO
+
+transforme: skew(x, y);
+transforme: skew(45deg);
+
+
+PUNTO DE TRANSFORMACION 
+
+Elegir el punto desde donde se inicia la transformación.
+
+  transform-origin: x y; Esta propiedad se le coloca al elemento que queremos que tome como referencia, puede ser de su padre o a sí mismo.
+
+.padre:hover .hijo{
+  transform-origin: x y;
+  transform-origin: 50% 50%; Por defecto;
+  transform-origin: top;
+  transform-origin: bottom;
+  transform-origin: left;
+  transform-origin: right;
+}
+
+  Si usamos transform-origin: top left; 
+  debemos hacer las transformaciones en el eje Z
+  transform: rotateZ(10deg)
+
+
+
+
+
+
+
+  ANIMACIONES
+
+  animation-name: animacion1;
+  animation-duration: 3s;
+  
+  @keyframe animacion1 {
+    0%{
+     opacity: 1; 
+    }
+    50%{
+      opacity: 0; 
+    }
+  }
+
+  animation-delay: 2s; Tiempo antes que se ejecute
+  animation-iteration-count: 2; Cuantas veces se hará
+  animation-iteration-count:  infinite;
+  
+  Suavizado
+  animation-timing-function: ease;
+  animation-timing-function: ease-in;
+  animation-timing-function: ease-out;
+  animation-timing-function: ease-in-out;
+  animation-timing-function: linear;
+  animation-timing-function: cubic-bezier(1,1,1,1);
+  La curva de Bezier recibe 4 valores, si a todos le colocamos 1, será una función linear. 
+
+  Para hacer que la animación vaya de 0% a 100% y de 100% a 0% (con el objetivo de que no se vea mal la animación ya que a veces los valores terminal en opacity: 0 y empiezan en opacity: 1 y eso hace que se vea mal) usamos 
+  animation-direction: alternate;
+
+  Al finalizar la animacion (100%{ opacity: 0}) la imagen regresa a su valor original (si respetar que los valores finales de la animación) para que los conserve usamos:
+  animation-fill-mode: forwards;
+
+
+  Para pausar una animación
+
+  animation-play-state: paused;
+
+  Para iniciarla:
+  animation-play-state: running; (Está por defecto)
+
+  Por ejemplo, podemos pausar la animacion cuando se hace hover sobre el padre
+
+  .padre:hover .hijo{
+    animation-play-state: paused;
+  }
+
+
+
+
+ACELERACION Y CURVA DE BEZIER
+
+animation-timing-function: ease; 
+animation-timing-function: ease-in; lento -> rápido
+animation-timing-function: ease-out; rápido -> lento 
+animation-timing-function: ease-in-out; lento al inicio y al final (como un pendulo)
+animation-timing-function: linear; Sin aceleracion
+
+
+Si queremos configurar a cuantos cuadros por segundo vaya nuestra animación, usamos: 
+
+animation-duration: 1s;
+animation-timing-function: steps(5); A 5 cuadros por segundo 
+animation-timing-function: steps(50); A 50 cuadros por segundo  
+
+
+La curva de Bezier va de -1 a 1 
+
+animation-timing-function: cubic-bezier(1, 1, 1, 1)
+
+Podemos usar el sitio web 
+http://cubic-bezier.com/#.17,.67,.83,.67
+
+
+ANIMACIONES MULTIPLES 
+
+animation-name: animacion1, animacion2, etc,
+
+animation-duration: 2s        
+            ó
+animation-duration: 2s, 10s  
+
+animation-timing-function: ease, linear
 
 
 
