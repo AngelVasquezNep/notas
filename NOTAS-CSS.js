@@ -55,7 +55,10 @@ text-decoration:   none; 	sin sobrayado los enlaces
 text-decoration:   underline; subrayado
 border-radius: 8px radio de las esquinas
 
+
 background: linear-gradient(to left/right, white, black) para DEGRADAR COLOR DENTRO DE UN ELEMENTO
+
+
 
 list-style: none; (para quitar los cheklist del menu)
 
@@ -1965,6 +1968,19 @@ const imagenes = [
 
 
 
+======================== Filgros para imagens ======================== 
+
+
+.imagen {
+  filter: blur(3px); Le da un efecto borroso
+  filter: grayscale; Blanco y negro
+  filter: sepia(100%); 
+  filter: hue-rotate(45deg); Rotar el color de una imagen
+  filter: brightness(50%); Porcentaje de brillo de una imagen
+  filter: contrast(200%); Contraste
+  filter: saturate(200%); Saturacion 
+  filter: saturate(200%) sepia(100%) blur(5px); Combinar 
+}
 
 
 
@@ -2311,7 +2327,7 @@ transform: scale(.5)
 
 Si tenemos más de una transformación, las escribimos en una sola linea: 
 
-transform: rotate(45deg) skew(10deg) translate(100px)
+transform: rotate(45deg) skew(10deg) translate(100px);
 
 
 -ROTACIONES
@@ -2409,6 +2425,7 @@ Elegir el punto desde donde se inicia la transformación.
   animation-iteration-count:  infinite;
   
   Suavizado
+
   animation-timing-function: ease;
   animation-timing-function: ease-in;
   animation-timing-function: ease-out;
@@ -2418,9 +2435,9 @@ Elegir el punto desde donde se inicia la transformación.
   La curva de Bezier recibe 4 valores, si a todos le colocamos 1, será una función linear. 
 
   Para hacer que la animación vaya de 0% a 100% y de 100% a 0% (con el objetivo de que no se vea mal la animación ya que a veces los valores terminal en opacity: 0 y empiezan en opacity: 1 y eso hace que se vea mal) usamos 
-  animation-direction: alternate;
+  => animation-direction: alternate;
 
-  Al finalizar la animacion (100%{ opacity: 0}) la imagen regresa a su valor original (si respetar que los valores finales de la animación) para que los conserve usamos:
+  Al finalizar la animacion (100%{ opacity: 0}) la imagen regresa a su valor original (sin respetar que los valores finales de la animación) para que los conserve usamos:
   animation-fill-mode: forwards;
 
 
@@ -2473,6 +2490,123 @@ animation-duration: 2s
 animation-duration: 2s, 10s  
 
 animation-timing-function: ease, linear
+
+
+
+ENCADENAR ANIMACIONES
+
+<div id="animacion">Elemento que contiene la animación</div>
+
+
+js
+
+const $elemento = document.getElementById('animacion')
+
+$elemento.addEventListener('animationend', (ev)=>{
+  if(ev.animationName === animacion1){
+    $elemento.style.animationName = 'animacion2'
+    $elemento.style.animationDuration = '3s'
+    
+    // Si quiero varias animaciones corriendo
+    $elemento.style.animationName = 'animacion2 animacion3'
+
+   }
+})
+
+
+
+
+HERRAMIENTAS DE DESARROLLADOR
+
+En chrome podemos visualizar desde 'more tools'
+
+=> Animations 
+  Podemos configurar todos los elementos de la animación. Tener un preview
+  Tiempo de la animacion
+
+=> Rendering 
+  Podemos ver cuantos megas consume nuestra aplicacion 
+  Ver cada elemento por cajita
+  FPS (Cuadros por segundo)
+
+
+
+OPTIMIZAR LOS RECURSOS DEL NAVEGADOR
+
+Dado que cada que hay un cambio como opacity: 0; o un transform; el navegador tiene que volver a hacer un render y ello consume recursos.
+Para avisarle que habrá un cambio a nuestro elemente le colocamos:
+
+.animation {
+  will-change: opacity, transform; 
+}
+
+
+
+PROPIEDADES QUE SE PUEDEN ANIMAR
+
+https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_animated_properties
+
+
+
+
+ANIMACIONES DESDE JS
+
+Para hacer animaciones desde JS se usa element.animate 
+Podemos buscar en Can I Use ? 'Web Animations Api'
+
+<div id="pelota"></div>
+
+
+const $pelota = document.getElementById('pelota')
+
+=> element.animate(keyframe = [{}, {}, ...], options = {})
+
+$pelota.animate([
+  {
+    transform: 'translateX(0)'
+  },
+  {
+    transform: 'translateX(0)'
+  }
+
+],
+{
+  duration: 1s, 
+  delay: 0,
+  direction: 'alternative',
+  easing: 'linear',
+  iterations: Infinity,
+  fill: 'forwards',
+  iterationStart: En qué punto de la animación quiero iniciar => 0 - 1,
+  endDelay:,
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
