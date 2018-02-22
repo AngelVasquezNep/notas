@@ -1052,6 +1052,8 @@ icomoon.io
 para las tipografias de los botones
 
 
+&#9776; => Ese es el UTF-8 del Burger menu
+
 
 <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
 
@@ -1319,7 +1321,7 @@ figure{ (el padre de la img)
 }
 
 
-<figcaption></figcaption> es la etiqueta que acompaña a un img y es como su "nombre" que la acompaña, igual que en los formularios
+<figcaption></figcaption> es la etiqueta que acompaña a un img y es como su "nombre", igual que en los formularios
 
 
 
@@ -1912,6 +1914,35 @@ AnimatedScrollTo with jquery
 
 
 
+
+
+
+
+
+SCROLL with jquery
+
+
+document.getElementById('botoncito').addEventListener('click',()=>{
+  const $objetivo = document.getElementById("objetivo")
+  $objetivo.scrollIntoView({
+      behavior: "smooth",
+      block: "start"
+  })
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ---------------------------------------------------
 ---------------------------------------------------
 ---------------------------------------------------
@@ -2265,6 +2296,69 @@ formspree.io
 
 
 // "FIN DE FOUNDATION"
+
+
+
+
+
+
+
+
+
+
+===================== Bootstrap =====================
+
+Break Points  
+
+Extra Small => < 544px      => .col-
+Small       => > 544px      => .col-sm-
+Medium      => > 768px      => .col-md-
+Large       => > 992px      => .col-lg-
+Extra Large => > 1200px     => .col-xl-
+
+
+Class
+
+.container => Contenedor normal con padding a los lados 
+.container-fluid => Ocupa 100vw
+
+.row => fila
+.col => Debe de tener desde que Break point y el tamaño (-12 ... -6 ... etc.)
+        .col- .col-sm- .col-md- .col-lg- .col-xl-
+
+Para darle un espacio extra entre columnas 
+    => offset-break-point-tamaño
+    => offset-md-4
+
+
+
+Flex-item-xs-middle => Ordenar verticalmente 
+flex-item-xs-between => ordenar horizontalmente
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
