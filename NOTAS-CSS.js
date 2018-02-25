@@ -1921,17 +1921,23 @@ AnimatedScrollTo with jquery
 
 SCROLL with jquery
 
+<button id="botoncito" href="#objetivo">Mover</button> 
 
 document.getElementById('botoncito').addEventListener('click',()=>{
   const $objetivo = document.getElementById("objetivo")
   $objetivo.scrollIntoView({
-      behavior: "smooth",
-      block: "start"
+    behavior: "smooth",
+    block: "start"
   })
 })
 
 
+Si quieres que un enlace tenga esa propiedad, le agregas: 
 
+<button id="botoncito" href="#objetivo" onclick="prevent(event)" >Mover</button> 
+
+
+const prevent = (evt) => evt.preventDefault()
 
 
 
@@ -2660,19 +2666,19 @@ $pelota.animate([
     transform: 'translateX(0)'
   },
   {
-    transform: 'translateX(0)'
+    transform: 'translateX(500px)'
   }
 
 ],
 {
   duration: 1s, 
   delay: 0,
-  direction: 'alternative',
-  easing: 'linear',
+  direction: 'alternative', //normal
+  easing: 'linear', //easy, etc.
   iterations: Infinity,
   fill: 'forwards',
   iterationStart: En qué punto de la animación quiero iniciar => 0 - 1,
-  endDelay:,
+  endDelay: 5s,
 })
 
 
