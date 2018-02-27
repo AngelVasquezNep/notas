@@ -1946,6 +1946,93 @@ const prevent = (evt) => evt.preventDefault()
 
 
 
+Carrucel sin jquery
+
+body{
+  margin: 0;
+  background: #f5f5f5;
+}
+.slider {
+  width: 100%;
+  margin: 0;
+  overflow: hidden;
+}
+
+.slider ul {
+  display: flex;
+  padding: 0;
+  width: 400%;
+  
+  animation: cambio 20s infinite alternate linear;
+}
+
+.slider li {
+  width: 100%;
+  list-style: none;
+}
+
+.slider img {
+  width: 100%;
+}
+
+@keyframes cambio {
+  0% {margin-left: 0;}
+  10% {margin-left: 0;}
+  
+  20% {margin-left: -100%;}
+  45% {margin-left: -100%;}
+  
+  55% {margin-left: -200%;}
+  80% {margin-left: -200%;}
+  
+  90% {margin-left: -300%;}
+  100% {margin-left: -300%;}
+}
+
+
+
+<div class="carrucel">
+  <ul>
+    <li>
+      <img src="" alt="Imagen1">
+    </li>
+    <li>
+      <img src="" alt="Imagen2">
+    </li>
+    <li>
+      <img src="" alt="Imagen3">
+    </li>
+    <li>
+      <img src="" alt="Imagen4">
+    </li>
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -2654,37 +2741,110 @@ ANIMACIONES DESDE JS
 Para hacer animaciones desde JS se usa element.animate 
 Podemos buscar en Can I Use ? 'Web Animations Api'
 
+// element.animate(keyframes = [], option = {})
+
 <div id="pelota"></div>
 
+const $pelota = document.getElementById('pelota2');
 
-const $pelota = document.getElementById('pelota')
-
-=> element.animate(keyframe = [{}, {}, ...], options = {})
-
-$pelota.animate([
+const animation = $pelota.animate([
   {
     transform: 'translateX(0)'
   },
   {
-    transform: 'translateX(500px)'
+    transform: 'translateX(100vw)' // 250
   }
-
-],
-{
-  duration: 1s, 
+],{
+  duration: 2000,
   delay: 0,
-  direction: 'alternative', //normal
-  easing: 'linear', //easy, etc.
+  direction: 'normal',
+  easing: 'linear',
   iterations: Infinity,
   fill: 'forwards',
-  iterationStart: En qué punto de la animación quiero iniciar => 0 - 1,
-  endDelay: 5s,
+  iterationStart: 0, // = 50%
+  // endDelay: 5000,
 })
 
 
+CONTROLES PARA MANIPULAR LA ANIMACION
+
+
+const $playButton = document.getElementById('playButton')
+
+$playButton.addEventListener('click',    () => animation.play())
+document.getElementById('pauseButton').addEventListener('click',   () => animation.pause())
+document.getElementById('stopButton').addEventListener('click',    () => animation.cancel())
+document.getElementById('reverseButton').addEventListener('click', () => animation.reverse())
 
 
 
+
+
+
+
+
+ANIMACIONES DE ENTRADA Y SALIDA  | MODAL
+
+  <-- HTML -->
+
+    <div class=" inOut animationInOut" id="inOut">
+      <div id="" class="message">
+        <h2 class="titulos">Animación de entrada y salida </h2>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit, cumque. Nisi esse deserunt molestias ea, facilis voluptatem nobis, voluptatum cupiditate repudiandae quod incidunt ipsum aperiam deleniti earum? Reprehenderit, obcaecati vitae?
+        </p> 
+      </div>
+      <div class="buttonCancel" id="buttonCancel">o</div>
+    </div>
+      
+  <-- CSS -->
+
+    .inOut{
+      width: 100%;
+      height: 100vh;
+      position: fixed;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      background-color: rgba(0, 0, 0, .7);
+      color: #fff;
+      animation-duration: 2s;
+      z-index: 100;
+      transform: translateY(-100vh);
+      /* animation-name: animationIn; */
+      animation-name: animationIn;
+      animation-fill-mode: forwards;
+      transition: 2s all;
+    }
+
+
+    @keyframes animationIn {
+      0%{
+        transform: translateY(-100vh);
+      }
+      100%{
+        transform: translateY(0px);
+      }
+    }
+
+    @keyframes animationOut{
+      0%{
+        transform: translateY(0px);
+      }
+      100%{
+        transform: translateY(-100vh);
+      }
+    } 
+
+  <-- JS -->
+    
+    const $inOut = document.getElementById('inOut')
+
+    document.getElementById('buttonCancel').addEventListener('click', ()=>{
+      $inOut.style.animationName = 'animationOut'
+    })
 
 
 
