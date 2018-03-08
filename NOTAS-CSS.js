@@ -56,8 +56,13 @@ text-decoration:   underline; subrayado
 border-radius: 8px radio de las esquinas
 
 
-background: linear-gradient(to left/right, white, black) para DEGRADAR COLOR DENTRO DE UN ELEMENTO
 
+
+Cambiar color background | color degradado | elipse 
+
+background: linear-gradient(to left/right, white, black) para DEGRADAR COLOR DENTRO DE UN ELEMENTO
+background-image: radial-gradient(ellipse farthest-corner at 45px 45px , #00FFFF 0%, rgba(0, 0, 255, 0) 50%, #0000FF 95%);
+background-image: radial-gradient(farthest-corner at 45px 45px , #FF0000 0%, #0000FF 100%);
 
 
 list-style: none; (para quitar los cheklist del menu)
@@ -1397,6 +1402,19 @@ OTRAS COSAS CHIDAS
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 ==============================================================================
                               {CSS GRID}
 ==============================================================================
@@ -1407,6 +1425,9 @@ OTRAS COSAS CHIDAS
   grid-template-columns: 2fr 1fr 1fr;
   grid-template-columns: repeat(4, 1fr);
   grid-auto-rows: minmax(200px, auto); /*para que las columnas que se creen tengan esa medida*/
+
+  grid track => Espacio entre dos lineas adyacentes, filas y columnas 
+  grid cell => Espacio en dos filas adyacentes y 2 columnas adyacentes
 
   /*Acomodar elementos*/
   grid-column-start: 1;
@@ -1485,6 +1506,137 @@ Quizá algún día sirva, para escribir en forma vertical, usamos:
 
 
 
+=====================================================
+
+                CURSO CSS GRID 
+                                        1 Marzo 2018
+=====================================================
+
+.container {
+  display: grid;
+  grid-template-columns: 200px 200px 200px;
+  grid-template-rows: 100px 100px;
+  grid-template: filas / columnas;
+  grid-gap: filas / columnas;
+}
+
+
+
+MEDIDAS 
+
+fr => fracción
+auto => distribuir el espaciado que tiene el elemento con respecto a su contenido
+
+repeat(3, auto)
+minmax(100px, 1fr)
+
+
+GRID TEMPLATE AREAS 
+
+.container {
+  display: grid;
+  grid-template-areas: 
+  "header header"
+  "left contenido"
+  "footer footer"
+}
+
+.container .hijo {
+  grid-area: header; => Sin comillas
+}
+
+                ó
+
+.hijo2 {
+  grid-column: fila-de-inicio / fila-de-final;
+}
+
+.hijo3 {
+  grid-column: fila-de-inicio / span 3 ;    => Esto medirá 3 columnas 
+  grid-column: 1 / -1 ;                     => Ocupa todo el ancho  
+}
+
+
+Filas 
+
+.hijo3 {
+  grid-column: fila-de-inicio / span 3 ;    => Esto medirá 3 columnas 
+  grid-column: 1 / -1 ;                     => Ocupa todo el ancho  
+  grid-row: fila de inicio / fila de fin;
+}
+
+
+NOMBRAR LINEAS 
+
+Se colocan entre corchetes intercalandolos en los valores de las lineas
+
+.elemento {
+  grid-template-columns: [inicio] 1fr [linea2] 1fr [linea3] 1fr [fin];
+  grid-template-rows: [inicio] 1fr [segundafila] 1fr [final];
+}
+
+.hijo {
+  grid-column: inicio / linea3; 
+  grid-row: inicio / final;
+}
+
+
+
+GRID IMPLICITO 
+
+grid-auto-flow: row; => Valor por defecto, le dice al navegador que si tengo más elementos de los que contemple, los apilará en filas (y no en columnas).
+
+Para el grin implicito usamos 
+
+.elementoPadre {
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 1fr 1fr;
+  grid-auto-rows: 200px;
+}
+
+Si no colocamos grid-template-rows las columnas ocuparan de manera equitativa el alto del padre.
+
+
+
+ALINEACION DE CONTENIDO 
+
+Para alinear cada elemento de la grilla: 
+
+Alineado horizontal => justify-items: start end center stretch; stretch está por defecto 
+Alineado vertica => align-item: start end center stretch; stretch está por defecto
+
+
+
+Para alinear a toda la grilla ( .container ): 
+
+justify-content: start end center stretch space-around space-between space-evenly;
+align-content: start end center stretch space-around space-between space-evenly;
+
+USA SPACE-EVENLY !! hace que entre cada elemento exista el mismo espacio libre.
+
+
+
+RESPONSIVE 
+
+grid-template-columns: repeat(auto-fill, 250px);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 /*----------------------CSS GRID--------------------------------*/
@@ -1506,6 +1658,9 @@ Quizá algún día sirva, para escribir en forma vertical, usamos:
 
 
 /*------------------------Etiquetas CSS-----------------------------*/
+
+Cosas chidas de css 
+Cosas chidas css 
 
 <p title="Yo aparezco cuando ponen el cursor sobre mi">Hola</p>
 
@@ -1684,6 +1839,7 @@ p::first-letter {
 }
 
 -Para dar un estilo distinto al texto que se selecciona
+- Texto seleccionado
 
 p::selection {
   color: white;
@@ -2013,7 +2169,44 @@ body{
 
 
 
+Carrucel con JS 
 
+Cambia los colores de fondo, pero podríamos mejorarlo para que cambie el background-image 
+
+.a { background-color: darkblue;  }
+.b { background-color: salmon;    }
+.c { background-color: seagreen;  }
+.d { background-color: rosybrown; }
+.e { background-color: yellow;    }
+
+<div class="containerCarts">
+  <div class="cartas a"> 0 a</div>
+  <div class="cartas b"> 1 b</div>
+  <div class="cartas c"> 2 c</div>
+  <div class="cartas d"> 3 d</div>
+  <div class="cartas e"> 4 e</div>
+</div>
+<button id="botoncito">next</button>
+
+
+const $cartas = Array.from( document.getElementsByClassName('cartas') )
+const $botoncito = document.getElementById('botoncito')
+
+let contador = 1
+
+$botoncito.addEventListener('click', () => {
+  contador++
+  $cartas.forEach((carta, index) => {
+    if(index + contador == 0 || index + contador == 5) carta.className = 'cartas e'
+    else if(index + contador == 1 || index + contador == 6) carta.className = 'cartas a'
+    else if(index + contador == 2 || index + contador == 7) carta.className = 'cartas b'
+    else if(index + contador == 3 || index + contador == 8) carta.className = 'cartas c'
+    else if(index + contador == 4 || index + contador == 9) carta.className = 'cartas d'
+    if (contador > 4)  contador = 0
+    
+  })
+  console.log(contador)
+})
 
 
 
@@ -2595,6 +2788,18 @@ Elegir el punto desde donde se inicia la transformación.
 
   ANIMACIONES
 
+
+  Mover una caja roja de izquierda a derecha 
+
+  @keyframe cuadrado {
+    0%{
+      left:0;
+    }
+    100% {
+      left: calc(100% - 200px);
+    }
+  }
+
   animation-name: animacion1;
   animation-duration: 3s;
   
@@ -2660,6 +2865,10 @@ animation-timing-function: steps(5); A 5 cuadros por segundo
 animation-timing-function: steps(50); A 50 cuadros por segundo  
 
 
+CURVA DE BEZIER
+
+cubic-bezier(0.75, -0.31, .33, 1.4)
+
 La curva de Bezier va de -1 a 1 
 
 animation-timing-function: cubic-bezier(1, 1, 1, 1)
@@ -2681,6 +2890,16 @@ animation-timing-function: ease, linear
 
 
 ENCADENAR ANIMACIONES
+
+https://www.w3.org/TR/css-animations-1/#event-animationevent
+
+
+Types: 
+
+  - animationstart
+  - animationend
+  - animationiteration 
+  - animationcancel
 
 <div id="animacion">Elemento que contiene la animación</div>
 
@@ -2849,6 +3068,71 @@ ANIMACIONES DE ENTRADA Y SALIDA  | MODAL
 
 
 
+ANIMACION DE OLAS 
+
+El punto es darle un delay a los demás circulos para que inicien en destiempo
+
+.olas{
+  width: 100%;
+  position: relative;
+  margin: 50px 0;
+  border: 1px solid #9c9c9c;
+  height: 300px;
+  background-color: skyblue;
+  overflow: hidden;
+  padding: 0;
+}
+
+.circuloOlas {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: rgba(37, 145, 187, .1);
+  position: absolute;
+  animation-name: circulosOlas;
+  animation-duration: 10s;
+  will-change: transform;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  margin: 0;
+}
+
+.circuloOlas.b{
+  animation-delay: 1s;
+} 
+
+.circuloOlas.c{
+  animation-delay: 3s;
+}
+
+
+@keyframes circulosOlas {
+  0%{
+  }
+  100%{
+    transform: translateX(100%);
+  }
+}
+
+
+
+
+
+
+
+Introducir Easter eggs en nuestra página
+
+Por ejemplo, queremos que al escribir algo en nuestro teclado, cambie algo, usamos Cheet.js
+
+npm i -S cheet.js
+
+lo importamos y usamos 
+
+import Cheet from 'cheet.js'
+
+Cheet('p a l a b r a', ()=>{
+  console.log("Algo pasó")
+})
 
 
 
@@ -2857,21 +3141,68 @@ ANIMACIONES DE ENTRADA Y SALIDA  | MODAL
 
 
 
+==========================================
+
+            Animaciones REACT
+
+==========================================
+
+
+Create React App es de Facebook  
+
+
+npm install -g create-react-app
+
+create-react-app my-app
+
+
+Usaremos => css-transition-group
+
+Recuerda revisar la documentación por si algo cambio
+
+https://github.com/reactjs/react-transition-group/tree/v1-stable
+
+
+npm install react-addons-css-transition-group
+
+
+import {CSSTransitionGroup} from 'react-transition-group'
+
+<CSSTransitionGroup
+  transitionName = "nombre"
+  transitionEnterTimeout={300} // Tiempo cuando la animación entra
+  transitionLeaveTimeout={300} // Tiempo cuando la animación sale
+>
+  ELEMENTOS A ANIMAR
+</CSSTransitionGroup>
+
+
+.nombre{
+
+}
+
+.nombre-enter{
+  // Se aplica cuando el elemento entra en la aplicación
+  // Estado inicial de entrada
+}
+
+.nombre-enter-active{
+  transition-duration: 2s; // Tiempo que pasa entre enter y enter-active
+  // Estado final de entrada
+}
+
+.nombre-leave{
+  // Estado inicial de salida
+}
+
+.nombre-leave-active{
+  // Estado inicial de salida
+}
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
+RESPUESTAS 
 
 
 

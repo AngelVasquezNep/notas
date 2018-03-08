@@ -598,6 +598,26 @@ Por cada uno de los elementos hará una funcion.
 
 
 
+{* NOTA agregada posterior al curso *}
+
+Uso de forEach
+
+const $elementosDelDom = Array.from( document.querySelectorAll('.claseQueQuieroObtener') )
+
+$elementosDelDom.forEach((elemento)=>{
+  elemento.addEventListener('click', ()=>{
+    console.log("UNA ACCION X")
+  })
+})
+
+
+
+
+
+
+
+
+
 
 CLASE 14 ENTIENDE LOS CLOSURES DE JS
 
@@ -3663,6 +3683,53 @@ En el modulo que querramos aplicarlo
 
 transition(name="move")
 	elemento a aplicar
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+======================================================
+======================================================
+
+                      REACT JS 
+
+======================================================
+======================================================
+
+
+Create React App es de Facebook  
+
+
+npm install -g create-react-app
+
+create-react-app my-app
+
+
+
+
+
+
+
+
+
 
 
 
