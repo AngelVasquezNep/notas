@@ -3687,8 +3687,15 @@ transition(name="move")
 
 
 
+DEPLOY VUE.JS
 
+Para hacer deploy en now de la carpeta dist: 
 
+  1. Borrar el archivo build.js.map
+  2. En el index de la carpta dist borrar la referencia de /dist/ (esto es por que cuando el index busque en la carpeta dist no hallará nada, pues nos encontramos parados sobre ella, sin embargo, si busca los archivos a su mismo nivel del arbol los podrá usar) 
+  3. En el build.js buscar la referencia "/dist/" y dejar solamente "/"
+  4. Sobre la misma carpeta dist correr el comando now
+  5. Cambiar el alias de tu-pagina-idhorribledenow.now.sh por tu-pagina.now.sh
 
 
 

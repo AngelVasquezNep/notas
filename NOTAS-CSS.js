@@ -1603,7 +1603,7 @@ ALINEACION DE CONTENIDO
 Para alinear cada elemento de la grilla: 
 
 Alineado horizontal => justify-items: start end center stretch; stretch está por defecto 
-Alineado vertica => align-item: start end center stretch; stretch está por defecto
+Alineado vertica => align-items: start end center stretch; stretch está por defecto
 
 
 
@@ -2594,6 +2594,8 @@ formspree.io
 
 ===================== Bootstrap =====================
 
+-xs-
+
 Break Points  
 
 Extra Small => < 544px      => .col-
@@ -3209,3 +3211,55 @@ RESPUESTAS
 
 
 {/*  */}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ESTILOS GENERALES 
+
+
+.btn {
+  margin: 0 20px;
+  padding: 5px;
+  padding-top: 10px;
+  font-size: 1.2em;
+  width: 20%;
+  min-width: 100px;
+  outline: none;
+  border-style: none;
+  border-radius: 5px;
+  transition: .2s;
+  background: #E7E9EE;
+}
+
+.btn:hover, 
+.btn:focus {
+  box-shadow: 0 3px 2px 3px #808080;
+  color: #fff;
+  background-color: #6F3E6E;
+}
