@@ -3013,8 +3013,10 @@ NOTA: tuve problemas cuando estuve en Linux, node me marcaba algo raro, solo lo 
 
 npm install --save-dev pug pug-loader
 
+npm install sass-loader node-sass webpack --save-dev
 
-
+npm i -D pug pug-loader
+npm i -D sass-loader node-sass 
 
 
 

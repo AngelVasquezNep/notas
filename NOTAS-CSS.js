@@ -1444,7 +1444,7 @@ OTRAS COSAS CHIDAS
   grid-area: 1 / 1 / 3 / 4 ;
 
   /*grid-template-areas*/
-  Cada hijo en la propiedad template-area: hijo1 denen tener nombre;
+  Cada hijo en la propiedad template-area: hijo1 deben tener nombre;
 
   grid-template-areas:
     "hijo1 hijo1 hijo2"
@@ -3216,7 +3216,12 @@ RESPUESTAS
 
 
 
-
+Paleta de colores 
+#402484
+#3D3287
+#1F569D
+#FF0064
+#5FBFB5
 
 
 
