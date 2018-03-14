@@ -1662,6 +1662,8 @@ grid-template-columns: repeat(auto-fill, 250px);
 Cosas chidas de css 
 Cosas chidas css 
 
+user-select: none => para que el texto no se pueda seleccionar (boton )
+
 <p title="Yo aparezco cuando ponen el cursor sobre mi">Hola</p>
 
 
@@ -3204,13 +3206,229 @@ import {CSSTransitionGroup} from 'react-transition-group'
 
 
 
-RESPUESTAS 
 
 
 
 
 
 {/*  */}
+
+
+
+
+
+=================================================================
+                Curso Post-CSS 13-marzo-2018
+=================================================================
+
+
+npm i -D postcss-cli
+
+npx postcss --version 
+
+npx postcss path-del-css-original -o (ouput) path-de-salida
+npx postcss src/css/home.css -o dist/css/home.css
+
+
+Para que no tengamos que recargar el script cada vez que hacemos cambios, le agregamos el flag -w (watch)
+npx postcss src/css/home.css -o dist/css/home.css -w
+
+
+
+
+www.postcss.parts => plugins de Post-css 
+
+Autoprefixer => npm i -D autoprefixer  / Pone los prefijos por nosotros (webkit- moz-)
+
+
+Para usar los plugins le agregamos -u al comando principal y despues el prefijo que instalamos 
+npx postcss src/css/home.css -o dist/css/home.css -w -u autoprefixer
+
+
+Para tener varios plugins usamos un un archivo (en la raiz) llamado postcss.config.js, dentro escribimos 
+
+
+module.exports = {
+  plugins: [
+    require('autoprefixer')({
+      // En este objeto podemos (o no) introducir opciones extra para dar mayor soporte a los navegadores
+      grid: true, => Con esto podemos dar soporte de grid a todos los navegadores 
+    })
+  ] 
+}
+
+
+
+CSS NEXT 
+
+cssnext.io
+
+npm i -D postcss-cssnext
+
+En el module.exports = {
+  plugins: [
+    ... ,
+    require('postcss-cssnext')({
+      features: {
+        autoprefixer: {
+          grid: true, 
+          flex: false
+        },
+        customProperties: false,
+        calc: false,
+      }
+    })
+  ]
+}
+
+
+Con customProperties: false nos ocupamos de que no se transpilten las variables nativas :root
+
+
+:root {
+  --nombreVariable: atributo;
+  // Crear un conjuto de atributos
+  --botonCustom: {
+    border: 1px solid red; 
+    border-radius: 5px;
+    background: grey;
+    color: #fff;
+    padding: .5em 2em;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-bottom: 5px solid grey; 
+  };
+}
+
+.btn {
+  @apply --botonCustom;
+}
+
+.algo {
+  propiedad: var(--nombredevariable);
+}
+
+
+
+
+Media Querie 
+
+
+@custom-media --nombreDelMedia screen and (max-width: 800px)
+@custom-media --nombreDelMedia screen and (width <= 800px)
+
+@custom-media --extra-small screen and (width <= 480px)
+@custom-media --small screen and (width < 768px)
+@custom-media --medium screen and (width >= 768px)
+@custom-media --large screen and (width >= 1024px)
+
+
+@media (--nombreDelMedia) {
+  ...
+}
+
+
+
+Retina Display 
+
+background-image: image-set(url densidad, url densidad)
+
+background-image: image-set(url('...') 1x, url('...') 2x )
+background-size: contain;
+background-repeat: no-repeat;
+background-position: center;
+
+
+Colores 
+
+
+background: color(black alpha(50%) contrast(50%));
+
+background: hwb(hue, whiteness, blackness);
+background: hwb(0 360, 0 - 100%, 0 - 100%, opacity);
+
+hue => Circulo cromatico
+    0 rojo
+    120 verde 
+    240 azul 
+
+grises => 0 - 255
+
+background: gre(50);
+...
+background: gre(30);
+...
+background: gre(10);
+
+
+
+System-ui => Con esto usamos la fuente por defecto del dispositivo en el que se abrá la aplicación, mac, windows, linux, ios, android, etc. 
+
+font-family: system-ui;
+
+
+
+
+Selectores Personalizados 
+
+@custom-selector :--nombreDelSelector .elemento1 , .elemento2
+
+@custom-selector :--botones .btn-1 , .btn-2
+@custom-selector :--boton-hover :hover , :active
+
+
+:--botones {
+  ...
+}
+
+:--botones:--boton-hover {
+  ...
+}
+
+
+
+Pseudo Selectores 
+
+:any-link => para seleccionar cualquier link 
+
+.elemento-padre :any-link {
+
+}
+
+:matches => hacer busquedas 
+
+.elemento-padre:matches(:last-child, :nth-of-type(2)){
+  
+}
+
+:not => busqueda de elementos y aplica propiedades a todos los que no haya encontrado
+
+.elemento-padre:not(:last-child, :nth-of-type(2)){
+  
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
