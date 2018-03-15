@@ -3221,6 +3221,8 @@ import {CSSTransitionGroup} from 'react-transition-group'
                 Curso Post-CSS 13-marzo-2018
 =================================================================
 
+https://www.postcss.parts/
+
 
 npm i -D postcss-cli
 
@@ -3354,11 +3356,11 @@ hue => Circulo cromatico
 
 grises => 0 - 255
 
-background: grey(50);
+background: gray(50);
 ...
-background: grey(30);
+background: gray(30);
 ...
-background: grey(10);
+background: gray(10);
 
 
 
@@ -3492,6 +3494,7 @@ module.exports = {
 
 
 
+
 LINT CSS  =>  stylelint 
 
 npm i -D stylelint 
@@ -3526,9 +3529,53 @@ require('postcss-import')({
 
 
 
+AGRUPAR MEDIA QUERIES 
+
+npm i -D css-mqpacker
+
+require('css-mqpacker')
+
+postccs.config.js
+
+module.exports = {
+  plugins: [
+    // require('autoprefixer')({
+    //   grid: true
+    // }),
+    require('postcss-import')({
+      plugins: [
+        require('stylelint'),
+      ]
+    }),
+    require('postcss-font-magician')({
+      variants: {
+        'Lato': {
+          '300': [],
+          '400': [],
+        }
+      }
+    }),
+    require('postcss-cssnext')({
+      features: {
+        autoprefixer: {
+          grid: true,
+          flexbox: false,
+        },
+        customProperties: false,
+        calc: false,
+      }
+    }),
+    require('css-mqpacker'),
+    require('cssnano')
+  ]
+}
 
 
 
+
+Compresión con NANO 
+
+npm i -D cssnano
 
 
 
