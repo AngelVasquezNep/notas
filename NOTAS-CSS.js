@@ -3354,11 +3354,11 @@ hue => Circulo cromatico
 
 grises => 0 - 255
 
-background: gre(50);
+background: grey(50);
 ...
-background: gre(30);
+background: grey(30);
 ...
-background: gre(10);
+background: grey(10);
 
 
 
@@ -3410,6 +3410,117 @@ Pseudo Selectores
 
 
 
+
+Nested 
+
+.algo {
+  ...
+  & .hijo {
+    ...
+    & a {
+      ...
+    }
+  }
+  @nest .padre {
+    Con @nest podemos ser explicitos y decir que solo aplique a los .algo que sean hijos de .padre
+  }
+
+  @media screen and (max-width: 800px){
+    propuedades de .algo que queremos cambiar
+  }
+   
+}
+
+
+
+CSS MODULAR 
+
+Importar css 
+
+npm i -D postcss-import 
+
+
+module.exports = {
+  plugins: [
+    require('postcss-import'),
+    require('postcss-cssnext')({
+      features: {
+        autoprefixer: {
+          grid: true, 
+          flex: false
+        },
+        customProperties: false,
+        calc: false,
+      }
+    })
+  ]
+}
+
+
+@import './otroArchivo.css'
+
+
+
+
+Fuentes 
+
+npm i -D postcss-font-magician 
+
+module.exports = {
+  plugins: [
+    require('postcss-import'),
+    require('postcss-font-magician')({
+      variants: {
+        'fuente': {
+          '300': ['woff'], Solo el wolf
+          '400': [], todas 
+        }
+      }
+    }),
+    require('postcss-cssnext')({
+      features: {
+        autoprefixer: {
+          grid: true, 
+          flex: false
+        },
+        customProperties: false,
+        calc: false,
+      }
+    })
+  ]
+}
+
+
+
+LINT CSS  =>  stylelint 
+
+npm i -D stylelint 
+
+require('stylelint'),
+
+
+En un archivo llamado stylelint.config.js
+
+module.exports = {
+  "rules": {
+    "block-no-empty": true, // No tener selectores vacios
+    "unit-whitelist": ["em", "rem", "%", "s", "Cualquier valor que SI queramos admitir"]
+  }
+}
+
+
+Y en el modulde.exports donde tenemos las otras configuraciones, debemos colocar el require abajo del import 
+
+require('postcss-import'),
+require('stylelint')
+
+ó dentro de la configuracion de postccs-import 
+
+require('postcss-import')({
+  plugins: [
+    require('stylelint')
+  ]
+})
 
 
 
