@@ -3712,6 +3712,169 @@ Para hacer deploy en now de la carpeta dist:
 
 
 
+=======================================================
+              CURSO WEB PACK (webpack) marzo 15
+=======================================================
+
+Hacemos un nuevo proyecto (carpeta)
+
+npm init 
+
+npm i -D webpack
+
+=> Para ver que versión se instalo, usamos npm list webpack
+
+Crear entry point => index.js en la raiz del proyecto
+
+En la package.json agregamos un script  => 
+"build": "webpack <nombre del entry point> <nombre de output>"
+"build": "webpack index.js bundle.js"
+
+
+------------
+WEBPACK.CONFIG.JS
+
+module.exports = {
+  entry: './index.js',
+  output: {
+    filename: 'bundle.js'
+  }
+}
+
+------------
+Cambiar la ruta por defecto de webpack.config.js
+
+"scripts": {
+  ...,
+  "build:otrowebpack" : "webpack --config ./ruta-del-nuevo-webpack.config.js"
+}
+
+El path.resolve sirve para las rutas relativas, dentro de sus parametros el "__dirname" es el directorio donde estoy parado y el nombre del archivo es el archivo que quiero trabajar.
+
+path.resolve(__dirname, 'nombre de archivo')
+
+
+
+
+------------
+LOADERS 
+
+CSS-Loader
+
+npm i -D style-loader css-loader
+
+En el index.js se debe importar la hoja de estilos =>  import './hoja-de-estilos.css'
+
+const path = require('path');
+
+module.exports = {
+  // entry: './index.js',
+  entry: path.resolve(__dirname, 'src/index.js'),
+  output: {
+    filename: 'bundle.js',
+    path: path.resolve(__dirname, 'dist')
+  },
+  module: {
+    rules: [
+      { test: "expresion regular", use: "loader"}, // Si es más de un loader, usamos un array ['loader1', 'loader2'] => Se ejecutan de derecha a izquierda
+      { test: /\.css$/, use: ['style-loader', 'css-loader'] }
+    ]
+  }
+};
+
+
+
+--------------
+PLUGINS
+
+Para que el css no se inyecte directamente en la cabecera, lo podemos colocar en un archivo aparte, para ello usamos =>
+
+npm i -D extract-text-webpack-plugin
+
+  const path = require('path')
+  const ExtractTextPlugin = required('extract-text-webpack-plugin') 
+
+  module.exports = {
+    ...
+    module: { 
+      rules[
+        { 
+          text: /\.css$/, use: ExtractTextPlugin.extract({
+            fallback: 'style-loader',
+            use:'css-loader'
+          }) 
+        }
+      ]
+    },
+    plugins: [
+      new ExtractTextPlugin('lugar dodne quiero que queden'), si le agregamos [name].css el output se llamará igual que el input.
+      new ExtractTextPlugin('css/style.css')
+    ]
+  }
+
+
+
+-----------------------
+MULTIPLES ENTRY POINTS
+
+  module.exports = {
+    entry: {
+      nombre-del-entry-point: path.resolve(__dirname, 'index.js'),
+      main: path.resolve(__dirname, 'index.js'),
+      home: path.resolve(__dirname, 'home.js'),
+      contact: path.resolve(__dirname, 'contact.js')
+    },
+    output: {
+      filename: 'js/[name].js', => Para que cada uno tenga un nombre dinamico. le agregamos /js para que cree una nueva carpeta y ahí guarde todo
+      path: path.resolve(__dirname, 'dist') 
+    }
+  }
+
+
+
+-------------------------
+SERVIDOR DE DESARROLLO CON WEBPACK
+
+En los scripts de package.json le agregamos --watch 
+
+"build": "webpack --mode development --watch"
+
+Además para agregar el servidor instalamos 
+
+npm i -D webpack-dev-server 
+
+Y cambiamos el script 
+
+"build": "webpack-dev-server --mode development "
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

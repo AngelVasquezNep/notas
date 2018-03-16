@@ -2,8 +2,9 @@ NOTAS RAPIDAS
 
 
 
-
-GIT
+============================================
+                CURSO GIT
+============================================
 
 
 zsh "Comando especial para ver git:(master)"
@@ -29,7 +30,7 @@ git commit -m "mensaje del commit"
 
 git commit -m "mensaje" --ament ("concatener cambios, por si olvidamos algo")
 
-								:wq ("salir")
+:wq ("salir")
 
 git tag 1.0		ó
 git tag -a 1.0 -m "Versión estable del proy"
@@ -103,7 +104,7 @@ Si hay conflicto, hago los cambios y un nuevo commit ("sin ponerle mensaje")
 
 
 
-------------------GITHUB---------------------
+======================GITHUB======================
 
 Clonar un repo
 
@@ -198,7 +199,7 @@ git push origin <rama> --tags
 
 
 =========================================================
-												TERMINAL
+										CURSO TERMINAL
 =========================================================
 
  
@@ -213,26 +214,25 @@ sudo apt-get upgrade
 
 
 -Ver que paquetes tengo instalados
-	dpkg --get-selections
+  dpkg --get-selections
 
--Ver programas instalados
-
-	dpkg --list
+  -Ver programas instalados
+  dpkg --list
 
 -Ver comandos de un programa 
 
-	dpkg -L [programa]
+  dpkg -L [programa]
 
 
 Desinstalar un programa
 
-	sudo apt-get --purge remove <nombredelprograma>
+  sudo apt-get --purge remove <nombredelprograma>
 
 
 Elimina del cache los paquetes .deb con versiones 
 anteriores a los de los programas que tienes instalados.
 
-	sudo apt-get autoclean
+  sudo apt-get autoclean
 
 
 Elimina todos los paquetes del cache. El único inconveniente 
@@ -347,9 +347,10 @@ sudo dpkg -i paquete.deb
 
 
 
---------------------------------
-    CURSO TERMINAL COMANDOS
---------------------------------
+============================================
+          CURSO TERMINAL COMANDOS con BECO
+============================================
+
 
 pwd		= "dónde estoy ?"
 cd 		= para moverme a un directorio
@@ -689,7 +690,7 @@ date => imprime la hora
 
 
 ======================================================
-                    DEPLOY NOW
+                    CURSO DEPLOY NOW
 ======================================================
 
 
@@ -702,6 +703,15 @@ cambiar nombre de la página
 now alias nombre-pág-12uibjwqnd982.now.sh nombre-pág.now.sh
 
 
+Para hacer deploy sin problema usamos un archivo llamado 
+
+now.json
+  {
+    "name": "Nombre del proyecto",
+    "alias": "proyecto.now.sh",
+    "type": "static, docker, npm"
+  }
+
 
 
 
@@ -711,7 +721,7 @@ now alias nombre-pág-12uibjwqnd982.now.sh nombre-pág.now.sh
 
 
 ======================================================
-                    Terminal Linux
+              CURSO DE SERVIDORES LINUX
 ======================================================
 
 Notas del curso de Administración de Servidores Linux
@@ -915,8 +925,8 @@ fdisk
 
 
 
-
-# Encriptar Datos
+------------------------------
+# ENCRIPTAR DATOS
 
 => vim password ó el nombre que querramos
 
@@ -1030,34 +1040,6 @@ Disciplina
 
 
  
-
-
-
-----------------------
-ATOM
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
