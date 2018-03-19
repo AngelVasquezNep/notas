@@ -878,6 +878,12 @@ pre{
 
 
 
+Para setear atributos con JS
+
+import platziImg from 'path'
+const img = document.createElement('img')
+img.setAtribute('src', platziImg)
+
 
 
 
@@ -1598,7 +1604,7 @@ Si no colocamos grid-template-rows las columnas ocuparan de manera equitativa el
 
 
 
-ALINEACION DE CONTENIDO 
+ALINEACION DE CONTENIDO | Alineacion grid | Alineamiento grid
 
 Para alinear cada elemento de la grilla: 
 
@@ -3593,11 +3599,22 @@ npm i -D cssnano
 
 
 Paleta de colores 
+
+#91007B
+#00F9D8
+#FF006B
+#00FFE7
+#531788
+#42E0C3
+#FF0067
+#40287B
+#D40885
 #402484
-#3D3287
-#1F569D
 #FF0064
+#3D3287
 #5FBFB5
+#FF003C Rojo invie
+#1F569D
 
 
 

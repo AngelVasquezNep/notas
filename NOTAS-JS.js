@@ -3716,6 +3716,20 @@ Para hacer deploy en now de la carpeta dist:
               CURSO WEB PACK (webpack) marzo 15
 =======================================================
 
+
+------------------------
+Super importante! ==> Public Path => Para que todo se direccione a DIST.
+
+entry: path.resolve(__dirname, 'src/index.js'),
+  output: {
+    filename: 'bundle.js',
+    path: path.resolve(__dirname, 'dist'),
+    publicPath: './dist/'
+  },
+------------------------
+
+
+
 Hacemos un nuevo proyecto (carpeta)
 
 npm init 
@@ -3742,7 +3756,7 @@ module.exports = {
 }
 
 ------------
-Cambiar la ruta por defecto de webpack.config.js
+Cambiar la ruta por defecto de webpack.config.js --config
 
 "scripts": {
   ...,
@@ -3764,6 +3778,7 @@ CSS-Loader
 npm i -D style-loader css-loader
 
 En el index.js se debe importar la hoja de estilos =>  import './hoja-de-estilos.css'
+
 
 const path = require('path');
 
@@ -3849,12 +3864,101 @@ Y cambiamos el script
 
 
 
+---------------------
+BABEL
+
+El preset es el que indica que babel queremos soportar, desde el 2015, 2016, etc.
+
+npm i -D babel-loader babel-core babel-preset-es2015 babel-preset-es2016 babel-preset-es2017
+
+{ 
+  test: /\.js$/, 
+  use: {
+      loader: 'babel-loader',
+      options: {
+        presets: ['es2015'] => Aquí podemos agregar varios presets 
+      }
+    }
+}
+
+
+---------------------
+JS moderno 
+
+export defaul => import algo from 'path';
+module.exports => import { algo } from 'path';
 
 
 
 
+---------------------
+SOPORTAR IMAGENES 
+
+npm i -D url-loader
+
+url-loader va a transformar las imagenes en código de 64 bits para que estén dentro del código.
 
 
+Para insentarla en el DOM usamos algo como lo siguiente => 
+
+En el index.js importamos la imagen 
+import platziImg from 'path'
+const img = document.createElement('img')
+img.setAtribute('src', platziImg)
+
+
+O en el CSS solo se pone como background-image: url('path') y listo, NO se tiene que hacer nada en el index.js
+
+En las rules 
+
+{
+  test: /\.(jpg|png|gif)$/,
+  use: {
+    loader: 'url-loader',
+    options: {
+      // Se coloca el limite en bytes de las imagenes que queremos que se conviertan
+      limit: 100000
+    }
+  }
+},
+
+--------------------
+SOPORTAR VIDEOS 
+
+npm i -D file-loader
+
+import video from 'path'
+
+video.setAtribute('src', video)
+...
+
+
+En las rules 
+
+{
+  test: /\.(mp4|webm)$/,
+  use: {
+    loader: 'url-loader',
+    options: {
+      // Se coloca el limite en bytes de los videos que queremos que se conviertan
+      limit: 1000000,
+      name: 'videos/[name].[hash].[ext]'
+    }
+  }
+},
+
+
+-------------------
+SOPORTAR JSON 
+
+npm i -D json-loader 
+
+test: /\.json$/,
+use: 'json-loader'
+
+
+import data from 'path/data.json'
+console.log(data)
 
 
 
