@@ -3699,6 +3699,11 @@ Para hacer deploy en now de la carpeta dist:
   4. Sobre la misma carpeta dist correr el comando now
   5. Cambiar el alias de tu-pagina-idhorribledenow.now.sh por tu-pagina.now.sh
 
+DEPLOY NUXT.js
+
+  1. npm run generate
+  2. cd dist
+  3. now
 
 
 

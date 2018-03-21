@@ -845,7 +845,7 @@ nav a:hover{
 
 
 
-EFECTO PARRALLAX
+EFECTO PARALLAX
 
 window.addEventListener("scroll", function(){
   console.log(window.scrollY)
@@ -2116,6 +2116,7 @@ body{
   margin: 0;
   background: #f5f5f5;
 }
+
 .slider {
   width: 100%;
   margin: 0;
@@ -2602,7 +2603,7 @@ formspree.io
 
 ===================== Bootstrap =====================
 
--xs-
+-xs-sx
 
 Break Points  
 
