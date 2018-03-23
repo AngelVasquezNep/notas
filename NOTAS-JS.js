@@ -3845,7 +3845,7 @@ MULTIPLES ENTRY POINTS
       contact: path.resolve(__dirname, 'contact.js')
     },
     output: {
-      filename: 'js/[name].js', => Para que cada uno tenga un nombre dinamico. le agregamos /js para que cree una nueva carpeta y ahí guarde todo
+      filename: 'js/[name].js', => [name] Para que cada uno tenga un nombre dinamico. le agregamos /js para que cree una nueva carpeta y ahí guarde todo
       path: path.resolve(__dirname, 'dist') 
     }
   }
@@ -3969,6 +3969,272 @@ console.log(data)
 
 
 
+------------------
+WEBPACK REACT
+
+npm i -S react react-dom
+npm i -D babel-preset-react
+
+
+
+{
+  test: /\.js$/,
+  use: {
+    loader: 'babel-preset',
+    options: ['es2015', 'react']
+  }
+}
+
+import React, { Component } from 'react'
+import {render} from 'react-dom'
+
+------------------
+Webpack SASS 
+npm i -D sass-loader node-sass
+
+abajo de css
+
+{
+	test: /\.scss$/,
+	use: [ 'css-loader', 'sass-loader' ]
+}
+
+
+------------------
+Webpack STYLUS 
+npm i -D stylus-loader stylus
+
+...abajo de css
+{
+	test: /\.styl$/,
+	use: [ 'css-loader', {
+		loader: 'stylus-loader',
+		options: {
+			// Modulos externos
+			use: [
+				required('nib'),
+				required('rupture')
+			],
+			import: [
+				'~nib/lib/nib/index.styl',
+				'~rupture/rupture/index.styl'
+			]
+		}
+	}]
+}
+
+
+------------------
+Webpack LESS 
+npm i -D less-loader less
+
+...abajo de css
+{
+	test: /\.less$/,
+	use: [ 'css-loader', {
+		loader: 'less-loader',
+		options: [
+			noIeCompat: true
+		]
+	}]
+}
+
+
+------------------
+Webpack PostCSS
+npm i -D postcss postcss-loader 
+
+...abajo de css
+{
+	test: /\.css$/,
+	use: [
+		{
+			loader: 'css-loader',
+			options: {
+				modules: true,
+				importLoaders: 1
+			},
+		}
+		'postcss-loader'
+	]
+}
+
+Dentro de la carpeta donde estén nuestros CSS (css/postcss.config.js) =>
+
+module.exports = {
+	plugins: {
+		'postcss-css-next': {}
+	}
+}
+
+
+
+
+------------------------
+Prevenir código duplicado
+
+Siempre hazlo! Ya que si en varios archivos usas una libreria (React), el bundle.js duplicará la libreria. 
+
+En webpack.config.js
+
+const path = require('path')
+const webpack = require('webpack')
+
+module.exports = {
+  // entry: './index.js',
+  entry: {
+		vendor: [
+			// Librerias que queremos que se empaqueten (common / vendor) a parte
+			'react',
+			'react-dom'
+		],
+		index: path.resolve(__dirname, 'src/js/index.js'),
+		home: path.resolve(__dirname, 'src/js/home.js')
+	}
+  output: {
+		path: path.resolve(__dirname, 'dist'),
+    filename: '[name].js'
+  },
+  module: {
+    rules: [
+      { test: "expresion regular", use: "loader"}, 
+      { test: /\.css$/, use: ['style-loader', 'css-loader'] }
+    ]
+  },
+	plugins: [
+		new webpack.optimize.CommonsChunkPlugin({
+			name: "vendor", // Nombre del archivo final
+			// VENDORS
+			minChunks: Infinity, // Para que se generen los vendors sin importar si solo es uno
+
+		})
+	]
+};
+
+En el index.html llamaremos a dos scripts 
+
+<script src="dist/vendor.js"><script>
+<script src="dist/index.js"><script>
+
+En el home.html
+<script src="dist/vendor.js"><script>
+<script src="dist/home.js"><script>
+
+
+------------------
+Webpack DLL 
+
+Para que las librerias pesadas (lo que pusimos en vendors) no se compilen a cada rato, podemos dejarlos compilados en un lugar.
+
+build:dll : "webpack --config ./webpack.dll.config.js",
+build:dll:src : "webpack --config ./webpack.config.js"
+
+=> webpack.dll.config.js
+
+	const path = require('path')
+	const webpack = require('webpack')
+
+	module.exports = {
+		entry: {
+			modules: [
+				'react',
+				'react-dom'
+			]
+		}
+		output: {
+			path: path.resolve(__dirname, 'dist'),
+			filename: '[name].js',
+			library: '[name]'
+		},
+		plugins: [
+			new webpack.DLLPlugin({
+				name: "[name]",
+				path: path.join(__dirname, '[name]-manifest.json')
+			})
+		]
+	}
+
+
+=> webpack.config.js
+
+	const path = require('path')
+	const ExtractTextPlugin = required('extract-text-webpack-plugin')
+	const webpack = require('webpack') 
+
+	module.exports = {
+		entry: {
+			home: path.resolve(__dirname, 'src/js/index.js'),
+			contact: path.resolve(__dirname, 'src/js/contact.js')
+		}
+		output: {
+			path: path.resolve(__dirname, 'dist'),
+			filename: '[name].js',
+		},
+		modules: {...},
+		plugins: [
+			new ExtractTextPlugin('css/index.css'),
+
+			new webpack.DLLReferencePlugin({
+				manifest: require('./modules-manifests.json')
+			})
+		]
+	}
+
+
+----------------------
+Cargar modulos Asincronamente 
+
+Es cuando queremos cargar alguna libreria o modulo solamente si es necesario.
+
+npm i -D babel-plugin-syntax-dynamic-import 
+
+test: /\.js$/,
+use: {
+	loader: 'babel-loader',
+	options: {
+		presets: ['es2015', 'react'],
+		plugins: [ 'syntax-dynamic-import' ]
+	}
+}
+
+
+EL módulo se puede cargar asincronamente con un evento (en este caso un boton)
+
+$button.addEventListener('click', async () => {
+	const { default: funcionModulo } = await import('/path')
+	funcionModulo()
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -4002,6 +4268,307 @@ Create React App es de Facebook
 npm install -g create-react-app
 
 create-react-app my-app
+
+
+El método render recibe dos parametros 
+
+render(componente de react, lugar donde lo voy a colocar)
+render(<App />, document.getElementById('root'))
+
+
+---------------
+COMPONENTE
+
+import React, { Component } from 'react'
+
+class Media extends Component {
+  render() {
+    return (
+      <div>
+        <div>
+          <img src="" alt="" width={ 260 } height={ 160 } />
+        </div>
+        <h3>Titulo</h3>
+        <p>Autor</p>
+      </div>
+    )
+  }
+}
+
+export default Media 
+
+----------------
+Estilos inline 
+
+import React, { Component } from 'react'
+
+class Media extends Component {
+  render() {
+		const styles = {
+			container: {
+				fontSize: 14,
+			}
+		}
+    return (
+      <div style = { styles.container }>
+        <div>
+          <img src="" alt="" width={ 260 } height={ 160 } />
+        </div>
+        <h3>Titulo</h3>
+        <p>Autor</p>
+      </div>
+    )
+  }
+}
+
+export default Media 
+
+
+-----------------
+Clases en archivos externos
+
+import './media.css'
+
+...
+return(
+	<div className = "Media"
+)
+
+-----------------
+Propiedades dinamicas 
+
+
+	=> En index.js
+	
+	render(<Elemento propiedad1="Propiedad 1"
+	 								 propiedad2="Propiedad 2"
+									 title="Title Dinamico"	 />, document.getElementById('root'))
+
+	=> En Elemento.js
+
+	class Elemento extends Component {
+		render() {
+			return (
+				<div>
+					<div title={this.props.title } ></div>
+					<p>{ this.props.propiedad1 }</p>
+					<p>{ this.props.propiedad2 }</p>
+				</div>
+			)
+		}
+	}
+
+
+----------------------
+VALIDAR DATOS 
+
+npm i -S prop-types
+
+Dentro del componente (en este ejemplo usaremos el componente Media)
+
+import PropTypes from 'prop-types' 
+...
+
+Media.propTypes = {
+	image: PropTypes.string,
+	title: PropTypes.string.isRequired, // Para que un valor sea requerido
+	author:	PropTypes.string,
+	funct: PropTypes.func,
+	boleano: PropTypes.,
+	number: PropTypes.number,
+	object: PropTypes.object,
+	array: PropTypes.array,
+	type: PropTypes.oneOf(['video', 'audio'])// Para validar el string que llega y decirle si queremos video, audio, una imagen, etc.
+}
+
+export defaul Media
+
+
+
+--------------------------
+Event handlers
+
+Para nombrar los eventos usamos camelCase
+
+on + nombre del evento = { this.nombreDeLaFuncion }
+
+Si dentro del handleClick queremos imprimir en pantalla alguna propiedad que nos llega por parametro ( ej. <Media title= "Un titulo dinamido"> ) no podemos hacerlo pues en handleClick no forma parte del DOM, para instanciarlo lo hacemos desde el constructor.
+O el handleClick lo ponemos como un arrow function ( Recuerda que heredan el contexto de su padre )
+
+
+class Media extends Component {
+	constructor (props) {
+		super(props)
+		this.handleClick = this.handleClick.bind(this)
+	}
+
+	handleClick(event) {
+		console.log(event)
+	}
+	
+	render(){
+		return (
+			<div onClick= { this.handleClick } > ... </div>
+		)
+	}
+}
+
+
+---------------------
+Estado de los componentes 
+
+En el constructor alojamos el estado
+Y para cambiarlo usamos la propiedad this.setState y dentro colocamos los valores que queremos cambiar
+
+class Media extends Component {
+	// constructor (props) {
+	// 	super(props)
+	// 	this.state = {
+	// 		author: props.author
+	// 	}
+	// }
+	
+	O Borramos el constructor y colocamos 
+
+	state = {
+		title: this.props.title
+	}
+
+	
+	handleClick = (event) => {
+		this.setState({
+			author: "Otro autor"
+		})
+	}
+	
+	render(){
+		return (
+			<button onClick= { this.handleClick } > { this.state.author } </button>
+		)
+	}
+}
+
+
+-------------------------------
+Ciclo de vida de un componente 
+
+1. Constructor (El componente no se ve) 
+		- 1. Podemos iniciar el estado 
+		- 2. Enlazar (bind) de eventos
+		- 3. Primer metodo que se llama al instanciar el componente 
+2. componentWillMount (Aún no se ve)
+		- Método llamado inmediatamente antes de que el componente se vaya a montar  
+		- Puedes hacer un setState 
+		- No hagas llamados a un API o suscripción a eventos
+3. render
+		- Contiene todos los eventos a renderizar ( estructura del componente )
+		- Contiene JSX en el return 
+		- Puedes calcular propiedades nCompleto = primerNombre + segundoNombre 
+4. componentDidMount 
+		- Método llamado luego de montarse el componente (el componente ya está en pantalla)
+		- Solo se lanza una vez 
+		- Enlazar (bind) de otros datos 
+		- Es el primer método que se llama al instanciar un componente 
+5. Actualización
+		componentWillReceiveProps 
+			- Método llamado al recibir nuevas propiedades
+			- Sirve para actualizar el estado con base a las nuevas propiedades 
+		shouldComponentUpdate
+			- {/* Las propiedades que tenia son iguales que las que tengo ? Si, entonces no necesito renderizar nuevamente mi elemento. */}
+			- Método que condiciona si el componente se debe volver a renderizar 
+			- Utilizado para optimizar el rendimiento 
+		componentWillUpdate
+			- Método llamado antes de re-renderizar un componente 
+			- Utilizado para optimizar el rendimiento 
+		render 
+			- re-render 
+		componentDidUpdate
+			- Método llamado luego del re-render
+6. Desmontado 
+		componentWillUnmount
+			- Método llamado antes de que el componente sea retirado de la aplicación.
+
+7. Manejo de errores 
+		componentDidCatch
+			- Si ocurre un error al renderizar el componente este método es invocado 
+			- El manejo de errores solo ocurre en componentes hijos 
+
+
+
+
+---------------------
+Listas ( for )
+
+Se ingresan dos llaves { Aqui adentro puedo escribir código js } y se itera sobre los 
+
+const items = this.props.data.categories[0].playlist // Info que nos llega desde el padre
+return (
+      <div className="Playlist ">
+        {
+          items.map( ( item ) =>{
+            return <Media {...item} key={item.title} />
+          })
+        }
+      </div>
+    )
+
+
+
+---------------
+Componentes Puros vs Funciones 
+
+class ComponentePuro extends PureComponent {
+	No se re-renderiza si le llegan los mismos valores
+}
+
+function CompFuncional (props) {
+	return (
+		<div> {props.data} </div>
+	)
+}
+
+Los componentes funcionales no tienen ciclo de vida, se usan principalmente cuando sólamente albergaran un elemento de la UI que no hará nada. Algo como un template.
+
+
+----------------------------
+Smart Components & Dumb Components
+Statefull 		vs 	Puro
+Fat 					vs 	Skinny
+Container 		vs 	Presentacional Component 
+
+
+Qué hace => Smart Component (Componente Inteligente)
+Cómo se ve => Dub Component (Componente Tonto)
+
+
+	Presentacional (Dumb)
+	- Puede contener smart components u otros componentes de UI
+	- Permiten compocisión con { props.children }
+	- No dependen del resto de la aplicación 
+	- No especifica cómo los datos son cargados o como mutan
+	- Recibe datos y callbacks solo con propiedades 
+	- Rara vez tiene su propio estado
+	- EStán escritos como componentes funcionales a menos que necesiten mejoras de performance
+
+	Container (Smart)
+	- Concentrado en el funcionamiento de la aplicación 
+	- Contienen componentes de UI u otros componentes 
+	- No tienen estilos 
+	- Proveen de datos a componentes de UI u otros componentes 
+	- Proveen de callbacks a la UI
+	- Normalmente tienen estado 
+	- Llaman a acciones 
+	- Generados por higher order components
+
+
+
+
+
+
+
+
+
+
 
 
 
