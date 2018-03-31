@@ -4307,6 +4307,7 @@ class Media extends Component {
 		const styles = {
 			container: {
 				fontSize: 14,
+				color: "red"
 			}
 		}
     return (
@@ -4402,6 +4403,8 @@ class Media extends Component {
 		this.handleClick = this.handleClick.bind(this)
 	}
 
+			ó
+
 	handleClick(event) {
 		console.log(event)
 	}
@@ -4434,6 +4437,7 @@ class Media extends Component {
 		title: this.props.title
 	}
 
+	// Metodo para cambiar el estado => setState({ propiedades: nueva propiedad })
 	
 	handleClick = (event) => {
 		this.setState({
