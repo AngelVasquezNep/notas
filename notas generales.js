@@ -95,7 +95,7 @@ git checkout -b <new-branch-name> ("crear una rama y movernos a ella")
 En master -mezclar-
 
 git merge <name-branch>
-{
+
 Si hay conflicto, hago los cambios y un nuevo commit ("sin ponerle mensaje")
 
 

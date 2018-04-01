@@ -3706,6 +3706,78 @@ DEPLOY NUXT.js
   3. now
 
 
+=====================================
+                 NUXT.js
+=====================================
+
+=== Instalar eventBus
+
+en plugins/eventBus.js
+
+	import Vue from 'vue'
+
+	const eventBus = {}
+
+	eventBus.install = function (Vue) {
+		Vue.prototype.$bus = new Vue()
+	}
+
+	Vue.use(eventBus)
+
+en nuxt.config.js
+
+	plugins: [
+    '~/plugins/eventBus.js'
+  ]
+
+	build: {
+			vendor: [ 'vue-lazyload' ],
+			...
+	}
+
+
+
+=== Agregar user-scalable=no
+
+meta: [
+	{ charset: 'utf-8' },
+	{ name: 'viewport', content: 'width=device-width, initial-scale=1, user-scalable=no' },
+	{ hid: 'description', name: 'description', content: 'Web site for Asomas' }
+]
+
+
+=== Agregar title y description dinamico 
+
+export default {
+
+	data() {
+		return {
+			title: "Asomas ",
+			description: "Home de Asomas"
+		}
+	},
+
+	head () {
+		return {
+			title: this.title,
+			meta: [
+				{ hid: 'description', name: 'description', content: this.description }
+			]
+		}
+	}
+
+}
+
+
+
+
+
+
+
+
+
+
+
 
 
 
