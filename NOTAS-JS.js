@@ -2583,7 +2583,7 @@ date=YYYY-MM-DD
 ===============================================================================
 
 
-
+Curso de Vue.js
 
 
 
@@ -2980,6 +2980,8 @@ En Vue
 ----------------------PLATZIMUSIC-----------------------
 --------------------------------------------------------
 
+Curso Profesional Vue.js
+
 
 Usaremos un template: webpack-simple
 
@@ -3038,6 +3040,14 @@ Registered to	           AngelVasquezNep
 
 
 
+----------------------------
+
+Escuchar eventos de windows
+
+created () {
+	this.resized = window.innerWidth
+	window.addEventListener('resize', (el) => this.resize() )
+}
 
 
 

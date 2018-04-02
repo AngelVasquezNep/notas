@@ -849,7 +849,7 @@ EFECTO PARALLAX
 
 window.addEventListener("scroll", function(){
   console.log(window.scrollY)
-  })
+})
 
 Recuerda que si vas a mover algo debes agregarle su medida "px", "em", "rem"
 
