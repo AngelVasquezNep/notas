@@ -4646,6 +4646,38 @@ Cómo se ve => Dub Component (Componente Tonto)
 	- Llaman a acciones 
 	- Generados por higher order components
 
+---------------------------
+Composición de Componentes 
+
+Podemos pasar un componente dentro de otro con props-children
+
+=== en icon.jsx
+
+import React from 'react'
+
+function Icon (props) {  
+  return (
+    <svg>
+      { props.children }
+    </svg>
+  )
+}
+
+=== en otro componente
+
+import Icon from './icon.jsx'
+
+export function Play (props) {
+  return (
+    <Icon {...props} >
+        <path d="M6 4l20 12-20 12z"></path>
+    </Icon>
+  )
+}
+
+
+
+Aquí Icon recibiría como props.children a <path ...></path>
 
 
 
@@ -4667,13 +4699,7 @@ Cómo se ve => Dub Component (Componente Tonto)
 
 
 
-
-
-
-
-
-
-
-
+/* Paleta Colores #3b8070  #3b8070  #3b8070  #35495e  #35495e  #35495e #FF003C*/
 
 //
+Cruz | crucecita &times;

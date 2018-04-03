@@ -3616,12 +3616,11 @@ Paleta de colores
 #5FBFB5
 #FF003C Rojo invie
 #1F569D
+#3b8070
+#35495e
 
 
-
-
-
-
+Cruz | crucecita &times;
 
 
 
