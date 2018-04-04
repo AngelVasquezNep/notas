@@ -4680,6 +4680,9 @@ export function Play (props) {
 Aquí Icon recibiría como props.children a <path ...></path>
 
 
+===============
+Manejo de Errores 
+
 
 
 
