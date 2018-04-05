@@ -4702,7 +4702,7 @@ Manejo de Errores
 
 
 
-/* Paleta Colores #3b8070  #3b8070  #3b8070  #35495e  #35495e  #35495e #FF003C*/
+/* Paleta Colores #3b8070  #3b8070  #3b8070  #35495e  #FF003C*/
 
 //
 Cruz | crucecita &times;

@@ -3596,7 +3596,10 @@ npm i -D cssnano
 
 
 
-
+Font family 
+{
+  font-family: 'Courier New', Courier, monospace;
+}
 
 
 Paleta de colores 
@@ -3609,6 +3612,7 @@ Paleta de colores
 #42E0C3
 #FF0067
 #40287B
+#00C485 Vue 
 #D40885
 #402484
 #FF0064
