@@ -3885,6 +3885,9 @@ module.exports = {
 };
 
 
+css-loader =>	Entender archivos CSS | Cargar archivos css e interpretarlos (import 'style.css')
+css-style  =>	Imprimir archivos CSS en el navegador
+
 
 --------------
 PLUGINS
@@ -4688,6 +4691,10 @@ Manejo de Errores
 
 
 
+===============
+Video API
+
+this.video.duration
 
 
 
@@ -4696,8 +4703,12 @@ Manejo de Errores
 
 
 
-
-
+limit css loader => a 
+webpack index.js bundle.js => c bundñe
+lts => long term support 
+npm list => b sistema de archivos 
+que sistema de modulos => COMMONJS
+CommonJS => a sistema de modulos AMD 
 
 
 
