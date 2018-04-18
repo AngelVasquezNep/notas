@@ -2098,7 +2098,7 @@ document.getElementById('botoncito').addEventListener('click',()=>{
 
 Si quieres que un enlace tenga esa propiedad, le agregas: 
 
-<button id="botoncito" href="#objetivo" onclick="prevent(event)" >Mover</button> 
+<a id="botoncito" href="#objetivo" onclick="prevent(event)" >Mover</a> 
 
 
 const prevent = (evt) => evt.preventDefault()
