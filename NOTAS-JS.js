@@ -4703,35 +4703,26 @@ this.video.duration
 Investigar: offsetParent
 VUE => this.$el.offsetHeight
 
+elementoHtml.offsetTop => Nos dice en qué posición está con respecto al scrollY => window.scrollY
 
-function getCoords(elem) { // crossbrowser version
-    var box = elem.getBoundingClientRect();
+Como detectar el scroll en de un elemento 
 
-    var body = document.body;
-    var docEl = document.documentElement;
-
-    var scrollTop = window.pageYOffset || docEl.scrollTop || body.scrollTop;
-    var scrollLeft = window.pageXOffset || docEl.scrollLeft || body.scrollLeft;
-
-    var clientTop = docEl.clientTop || body.clientTop || 0;
-    var clientLeft = docEl.clientLeft || body.clientLeft || 0;
-
-    var top  = box.top +  scrollTop - clientTop;
-    var left = box.left + scrollLeft - clientLeft;
-
-    return { top: Math.round(top), left: Math.round(left) };
+scroll (top, altura) {
+	console.log(`Top: ${top} | alt: ${altura}`)
+	// let algo = window.pageYOffset || docEl.scrollTop || body.scrollTop
+		if(top > altura) {
+			console.log("Llegamos a los proyectos")
+		}
+	}
+},
+mounted () {
+	const $proyectos = document.getElementById('proyectos')
+	console.log('OFF SET: ' + $proyectos.offsetTop)
+	window.addEventListener('scroll', (e) => { 
+	let top = window.scrollY
+		this.scroll(top, $proyectos.offsetTop)
+	})
 }
-
-
-limit css loader => a 
-webpack index.js bundle.js => c bundñe
-lts => long term support 
-npm list => b sistema de archivos 
-que sistema de modulos => COMMONJS
-CommonJS => a sistema de modulos AMD 
-
-
-
 
 /* Paleta Colores #3b8070  #3b8070  #3b8070  #35495e  #FF003C*/
 
