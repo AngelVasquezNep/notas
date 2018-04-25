@@ -560,9 +560,9 @@ console.log(suma(2, 3, 4, 5, 6))
 // Usando metodo reduce()
 
 function suma(...numeros){
-	return numeros.reduce(function(acumulador, numero){
-		acumulador += numero
-		return acumulador
+	return numeros.reduce(function(resultado, numero){
+		resultado += numero
+		return resultado
 	}, 0)
 }
 
@@ -4728,3 +4728,4 @@ mounted () {
 
 //
 Cruz | crucecita &times;
+Space | Espacio | &nbsp;
