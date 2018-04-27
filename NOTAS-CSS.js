@@ -1,5 +1,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 
+clip-path: polygon(0 44%, 62% 0, 142% 100%, 0 78%); Para crear poligonos 
 
 DESARROLLO WEB ONLINE
 
