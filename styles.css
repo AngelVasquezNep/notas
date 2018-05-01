@@ -1,0 +1,43 @@
+body {
+  font-family: 'Courier New', Courier, monospace; 
+  color: #00C485;
+  color: #FF003C; 
+  color: #91007B;
+  color: #00F9D8;
+  color: #FF006B;
+  color: #00FFE7;
+  color: #531788;
+  color: #42E0C3;
+  color: #FF0067;
+  color: #40287B;
+  color: #D40885;
+  color: #402484;
+  color: #FF0064;
+  color: #3D3287;
+  color: #5FBFB5;
+  color: #1F569D;
+  color: #3b8070;
+  color: #35495e;
+  content: "crucecita &times;"
+}
+
+.btn {
+  margin: 0 20px;
+  padding: 5px;
+  padding-top: 10px;
+  font-size: 1.2em;
+  width: 20%;
+  min-width: 100px;
+  outline: none;
+  border-style: none;
+  border-radius: 5px;
+  transition: .2s;
+  background: #E7E9EE;
+}
+
+.btn:hover, 
+.btn:focus {
+  box-shadow: 0 3px 2px 3px #808080;
+  color: #fff;
+  background-color: #6F3E6E;
+}

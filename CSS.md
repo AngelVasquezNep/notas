@@ -3596,6 +3596,219 @@ npm i -D cssnano
 
 
 
+---------------------------------------------
+
+# Curso SASS
+
+Los archivos .sass o .scss deben llevar _nombre.sass excepto el principal (style.sass)
+
+- Importar
+
+Todo se importa dentro del style.scss (se hace respetando la cascada CSS)
+
+Para importar lo hacemos sin el "_"
+
+@import "variables.sass"
+
+- Variables
+
+$nombre-de-variable: valor;
+$color-principal: #42E0C3;
+
+- Anidaciones
+
+.clase {
+  color: $color-principal;
+  .clase-elemento {
+    content: "icon"
+    .clase__elemento--modificador {
+      color: $color-alert;
+    }
+  }
+}
+
+.clase {
+  &__elemento{}
+  &--modificador{}
+  &.clase--modificador
+} 
+
+- BEM Bloque__Elemento--Modificador
+
+
+- Mixin (NO USAR PORQUE REPITE CÓDIGO)
+
+@mixin nombre-mixin {
+  propiedad: valor;
+}
+
+section {
+  @include nombre-mixin;
+}
+
+@mixin max-width {
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+section {
+  @include max-width;
+}
+
+- Mixin parametrico 
+
+@mixin nombre-mixin($parametro-1: valor) {
+  propiedad: $parametro-1;
+}
+
+.bloque--modificador {
+  @include nombre-mixin(1200px)
+}
+
+
+- Mixin Responsive (SI USAR)
+
+@mixin responsive-to($width) {
+  @media screen and (max-widtg: $width) {
+    @content;
+  }
+}
+
+.container {
+  @include responsive-to(720px) {
+    background-color: red; <!-- Todo ésto será el @content -->
+  }
+}
+
+
+
+- PlaceHolder
+
+Para ahorrar muchísimo código
+
+%btn {
+  ...propiedades del btn
+}
+
+.btn--primaty {
+  @include %btn
+}
+
+
+
+- Funciones 
+
+Pág Sass => http://sass-lang.com/documentation/Sass/Script/Functions.html
+
+  - Color-aclarar: lighten($color, %)
+  - Color-obscurecer: darken($color, %)
+  - Color-invertido: invert($color)
+
+
+- Directiva 
+
+@function nombre-funcion ($parametro-1, $parametro-2, etc.) {
+  @return $parametro-1 + $parametro-2;
+}
+
+.div {
+  padding: nombre-funcion($p-1, $p-2);
+}
+
+DRY => Don't Repeat Your Self
+
+
+- Mapas 
+
+<!-- $fs => font size -->
+$fs : (
+  big: 24px,
+  normal: 16px,
+  small: 14px,
+  x-small: 12px,
+);
+
+p {
+  font-size: map-get($fs, normal);
+}
+
+.small {
+  font-size: map-get($fs, small);
+}
+
+
+
+Control de flujo de información
+
+- Each
+
+@each $font in (normal, bold, italic) {
+  .#{$font} { font-weight: $font; }
+}
+
+  ó usamos una lista (Los valores de las listas se separan con espacios)
+
+$font-weights: normal bold italic;
+
+@each $font in ($font-weights) {
+  .#{$font} { font-weight: $font; }
+}
+
+- For
+
+@for $i from 1 to 5 {
+  .color-#{$i} {
+    content: "#{$i}";
+  }
+}
+
+- If 
+
+$varible: valor1;
+
+@if $variable == valor1 {
+  ...
+}
+@else {
+  ...
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--------------------------------------
+
+
 
 Font family 
 {
@@ -3666,3 +3879,4 @@ ESTILOS GENERALES
   color: #fff;
   background-color: #6F3E6E;
 }
+
