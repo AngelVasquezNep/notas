@@ -33,3 +33,11 @@ td => Data / Cell
 </v:textbox>
 </v:rect>
 <![endif]-->
+
+
+- ToDO
+
+  - Quizá sirva centrar el Header de forma vertical.
+  - Colocarle margin a todos los parrafos para que siempre sean tomados en cuenta.
+  - La parte de Productos colocarle margin-top y bottom, así como padding.
+  - 
