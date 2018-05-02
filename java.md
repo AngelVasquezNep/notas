@@ -109,6 +109,7 @@ El método main
 
 - Es el punto de entrada de una aplicación Java
 - Declara todas las acciones realizadas por tu aplicación
+- Es el Cerebro de la aplicación, el que controla todo
 
 public class HolaMundo {
   public static void main(String[] args) {
@@ -123,46 +124,113 @@ En la consola si usamos el comando => java HolaMundo <Lo que escribamos aquí lo
 IDE Eclipse
 
 Una vez instalado, se genera un proyecto, en /src se crea un package
+
 - La regla es colocarle un identificador como si fuera dominio web escrito alreves. algo.com => com.algo.nombredelproyecto
+
+
+
 
 
 Variable 
 
 Un espacio de memoria al que le asignamos un contenido.
 
-Tipos de datos
+
+=> Tipos de datos
 
 Primitivo (comienzan con minusculas)
+  
   - Enteros
     - byte  - 1 byte  => -128 a 127
     - short - 2 bytes => -32,768 a 32,767
     - int   - 4 bytes
-    - long   - 8 bytes
-  - 
+    - long  - 8 bytes
+  
+  - Flotantes (Pueden tener decimales)
+    - float - 4 bytes
+    - doble - 8 bytes
 
-Declarar una variable 
+  - Texto
+    - char - 2 bytes => unicode (Una sóla letra)
+
+  - Lógicos
+    - boolean - 2 bytes => true , false
+
+=> Declarar una variable 
 
 main (...) {
+
+  // Enteros
+  
   byte edad = 127;
   short year = 1234;
   int id_user = 1231441;
-  long id_twitter = 121323434123L; (Se coloca una L al final para que sea identificado como long y no como entero 'int')
+  long id_twitter = 121323434123L; (Se coloca una L para que sea identificado como long y no como entero 'int')
+
+  // Flotantes
+
+  float diametro = 34.15F; (Se le coloca una F para que sea identificado como float y no como doble)
+  doble precio = 12313.12313123321412313;
+
+
+  // Texto
+  
+  char genero = 'F'; (Se usan comillas simples) 
+
+  // 
+
+  boolean isVisible = true; 
+
 } 
 
 
-Tipo Objeto
+
+- Reglas para nombrar variables 
+
+  - Case sensitive
+  - Puede iniciar con $ o _
+  - Las constantes se escriben en MAYÚSCULAS y contienen _ 
+
+  - Upper Camel Case => Para nombre de Clases => HolaMundo
+  - Lower Camel Case => Para variables y metódos 
+
+
+
+- Cast de Variables
+
+  => Situación donde necesitamos cambiar el tipo de dato
+  - Se le puede hacer cast a tipos de datos primitivos y objetos primitivos
+
+  Para lograrlo colocamos en una nueva variable la variable que queremos casterar y le ponenemos entre parentesis el tipo de valor que queremos que tome.
+
+  doble precio = 43.23;
+  int i = (int) precio; 
+
+  Dado que doble es mayor que int, al imprimir int sólo veremos lo que haya 'entrado' dentro del mismo. En este caso, no veríamos los decimales.
+
+  Sí pasamos un int a char (los char son unicode => un código por cada carácter ) veríamos una letra...
+  Ejemplo: 
+
+  int codigo = 97;
+  char codigoASCII = (char) codigo;
+
+  >> Consola: a
 
 
 
 
+- Arrays
 
+  - Los arreglos se pueden definir como OBJETOS en los que podemos guardar más de una variable.
+  - Podemos tener arreglos de n dimensiones => básicamente se aumenta una dimensión cuando se anidan, excepto en la segunda dimensión.
+  
+  => Declarar array 
+    
+    TipoDeDato[] nombreDeVariable;
 
+  => Definir tamaño
 
-
-
-
-
-
+    nombreDeVariable = new TipoDato[capacidad];
 
 
 
