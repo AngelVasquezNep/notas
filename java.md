@@ -228,14 +228,38 @@ main (...) {
     
     TipoDeDato[] nombreDeVariable;
 
+    - Al declarar el tipo de dato (int, doble, boolean, etc.) todos los datos contenidos deben ser del mismo tipo. 
+
   => Definir tamaño
 
     nombreDeVariable = new TipoDato[capacidad];
+    arreglo = new int[3];
+
+  => Definir la cantidad de dimensiones
+
+    Se hace por medio de los corchetes que se colocan delante del tipo de variables.
+
+    unaDimension = new int[];
+    dosDimensiones = new int[][];
+    dosDimensiones = new int[fila][columna];
+
+  => Indices
+
+    char[] names = new char[3];
+    names[0] = 'a';
+    names[1] = 'b';
+    names[2] = 'c';
+
+    char[][][][] monkey = new char[2][3][2][2];
+
+    monkey[2][2][1][2] = 'm';
 
 
 
+- Operadores 
 
-
+  - Aritméticos => + , - , / , * , %
+  
 
 
 
