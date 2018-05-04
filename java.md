@@ -260,6 +260,154 @@ main (...) {
 
   - Aritméticos => + , - , / , * , %
   
+  - Asignación
+    > += => a += b => a = a + b
+    > -= => a -= b => a = a - b
+    > *= => a *= b => a = a * b
+    > /= => a /= b => a = a / b
+    > %= => a %= b => a = a % b
+
+  - Incremento
+    > ++ => i++ => i = i + 1
+    > -- => i-- => i = i - 1
+
+    Orden de las operaciones
+
+    i++
+      1. Primero asigna el valor: i = i
+      2. Luego incrementa en 1.
+    ++i
+      1. Primero incrementa i + 1.
+      2. El resultado lo asigna a 1.
+
+
+  - Equidad (Retornal valores booleanos)
+    == Igualdad
+    != Desigualdad
+
+  - Relacionales (Retornal valores booleanos)
+
+     < Menor que
+     > Mayor que
+    <= Menor igual que
+    >= Mayor igual que
+
+  - Lógicos
+
+    && and
+    || or
+     ! not
+
+
+- Control de Flujo
+
+  - Precendencia de operaciones (Prioridad de una operación sobre otra)
+
+    1. Parentesis
+    2. Exponentes
+    3. Multiplicación - División
+    4. Suma - Resta
+    5. Modulo
+    6. Igua, mayor, menor, diferente, >=, <=.
+    7. Not !
+    8. And &&
+    9. Or ||
+
+  - If - Else
+    if(condición) {
+      ...
+    } else if(condición){
+      ...
+    } else {
+      ...
+    }
+
+  - Switch 
+
+    En vez de tener un camino verdadero y uno falso, lo que hará es compararse con tantos casos como tengamos.
+
+    byte num = 2
+
+    switch (num) {
+      case 1:
+        System.out.println("Caso 1");
+      break;
+      case 2:
+        System.out.println("Caso 2");
+      break;
+      default:
+        System.out.println("Caso Default");
+      break;
+    }
+
+    > Caso 2
+
+
+  - While
+
+    while (sentencia) {
+      ... Se repetirá hasta que la sentencia deje de ser cierta
+    }
+
+  - Do while
+
+    Las instrucciones se ejecutan al menos una vez
+
+    do {
+      // Instrucciones
+    } while (condición) ;
+
+  - For
+
+    for ( int i = 0; i <= 5; i++) {
+      ...
+    }
+
+  - For each
+
+    Itera sobre cada uno de los elementos del arreglo. 
+
+    int[] numeros = new int[5];
+
+    for (int i in numeros) {
+      // La i es el valor del arreglo mas no el indice.
+    }
+
+
+  - For anidados
+
+    public class Main {
+      public static void main(String[] args) {
+        int[][] num = new int[3][1];
+        for (int i = 0; i < num.length; i++) {
+          for ( int j = 0; j < num[0].length; j++ ) {
+            System.out.println(num[0].length);
+          }
+        }
+      }
+    }
+
+
+
+
+- Programación Orientada a Objetos
+
+  - Una nueva forma de pensar.
+  - Se trata de descomponer un problema en subproblemas y en más subproblemas.
+  - Debemos tener un alcance del proyecto. Así mismo un entendimiento.
+  - Los objetos pueden ser físicos o conceptuales.
+  - Un objeto tiene atributos y comportamiento (Funcionalidad).
+  - Los nombres y atributos de los objetos por lo general son SUSTANTIVOS. (Ejem: User, sesion)
+  - Tiene funcionalidades. Suelen ser verbos o SUSTANTIVO y verbo. (Ejem: login, makeReport)
+
+
+
+
+
+
+
+
+
 
 
 
