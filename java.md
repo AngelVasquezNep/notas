@@ -392,13 +392,159 @@ main (...) {
 
 - Programación Orientada a Objetos
 
+  Objetos
+
   - Una nueva forma de pensar.
   - Se trata de descomponer un problema en subproblemas y en más subproblemas.
   - Debemos tener un alcance del proyecto. Así mismo un entendimiento.
   - Los objetos pueden ser físicos o conceptuales.
-  - Un objeto tiene atributos y comportamiento (Funcionalidad).
-  - Los nombres y atributos de los objetos por lo general son SUSTANTIVOS. (Ejem: User, sesion)
+  - Un objeto tiene atributos y comportamiento/Métodos (Funcionalidad).
+  - Los nombres de los objetos y sus atributos por lo general son SUSTANTIVOS. (Ejem: User, sesion)
   - Tiene funcionalidades. Suelen ser verbos o SUSTANTIVO y verbo. (Ejem: login, makeReport)
+
+
+  Nota: Un atributo no es la respuesta al mismo => 
+        ejemplo: "El auto es de color verde"
+        En atributo no es verde, sino "color".
+
+
+  - Los atributos y comportamientos se diseñaran y crearan en función del "escenario" (dominio del problema/alcance) en el que nos encontremos.
+    Habrá atributos que necesitemos si queremos conocer un auto, pero serán otros diferentes si nuestro objetivo es venderlo.
+
+  Clases
+
+  - Una clase es la forma en cómo definimos el objeto para generar más objetos.
+  - Las clases son descriptivas, son plantillas (algo como moldes, pienso en un componente de Vue) 
+
+  
+    public class Auto {
+      <!-- atributos -->
+
+      int id;
+      String matricula;
+      String marca;
+      double precio;
+      boolean vendido;
+
+      <!-- comportamientos -->
+
+      public void mostrarDatos () {
+        ...
+      }
+
+      public boolean esVendido() {
+        ...
+      }
+
+    }
+
+  - Podría verse cómo una receta, primero los ingredientes y después la preparación.
+  - Para ser más explicitos, las clases son los moldes para crear objetos, aquí la clase Auto nos permitirá crear tantos autos como deseemos.
+
+
+
+Importar 
+
+  La palabra import se utiliza para importar clases externas.
+
+  import java.util.Date; => Importa sólo una clase.
+
+  impot java.util.* => Importa un paquete de clases. => Parece que es la mejor práctica.
+
+  Sí tenemos dos clases de diferentes paquetes que se llamen igual, lo arreglamos de la siguiente forma: 
+
+  import java.util.Date;   X
+  import java.sql.Date;    X
+
+  Solución: 
+
+  import java.util.Date;
+
+  java.sql.Date date = new java.sql.Date();
+
+
+  - Importar Static
+
+  import static java.lang.Math.PI; // importa sólo la variable estática PI
+  import static java.lang.Math.*; // importa todos los elementos estáticos de la clase
+
+
+  - Cosas que debes saber:
+
+  Por default siempre se importa java.lang.*
+  No necesitas importar las clases que estén en el mismo paquete.
+
+
+
+Métodos
+
+  Elementos de los métodos: 
+
+  - Modo de acceso: public
+  - Valor regreso: int 
+  - Nombre: suma
+  - Argumentos: a, b
+
+  public int suma(int a, int b) {
+    return a + b;
+  }
+
+  Sí no regresamos nada en la parte "Valor de regreso" escribiremos void y omitiremos la palabra return.
+
+  => No puede declararse un método dentro de otro método.
+
+
+  - Declarar un Objeto -> No consume memoria, tampoco lo podemos usar.
+
+    Auto miAuto;
+
+  - Instanciar un Objeto -> Ocupa memoria.
+
+    miAuto = new Auto();
+
+  - Instanciar y declarar un objeto
+
+    Auto miAuto = new Auto();
+
+    -> Esto es el método constructor.
+
+      - El método constructor.
+
+        - Crea nuevas instancias de una clase.
+        - Tiene el mismo nombre que la clase que instancia.
+        - Usa la palabra reservada New para invocarlo.
+        - Usa 0 o más argumentos contenidos dentro de paréntesis que siguen al nombre.
+        - No regresa un valor.
+
+  - Utilizar un Objeto
+
+    Auto miAuto = new Auto();
+
+    miAuto.marca = "Ferrari";
+    miAuto.mostrarDatos();
+
+
+- Método Static
+
+  Se puede usar en todas las clases.
+  Básicamente se pueden usar los métodos directos de la clase, sin necesidad de instanciar la clase en un objeto. Algo como la clase Math. Ésta no se instancia, pero puede ser accedida con (por ejemplo) Math.random(), Math.PI, etc.
+
+  Si crearamos una clase Calculadora de la siguiente forma 
+
+  public class Calculadora {
+    public static int suma(int a, intb) {
+      return a + b;
+    }
+  }
+
+  Podré accesarla directamente (sin instanciarla => Calculadora c = new Calculadora) simplemente colocaré Calculadora.suma(3, 4);
+
+  => SÚPER NOTA: Dado que los métodos static no se instancian, ayudan a ahorrar memoria.
+
+  - Los métodos y atributos estaticos pueden ser accesados por otras clases y a su vez modificados.  
+
+
+
 
 
 
