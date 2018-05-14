@@ -1,6 +1,61 @@
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+Temas a explorar: 
 
-clip-path: polygon(0 44%, 62% 0, 142% 100%, 0 78%); Para crear poligonos 
+- Crear formas poligonales:
+  clip-path: polygon(0 44%, 62% 0, 142% 100%, 0 78%); Para crear poligonos 
+
+En CSS Grid Layout parece funcionar para que todo se aline de una forma interesante, se usa sobre los hijos del grid. (como si fueran una columna continua)
+
+  break-inside: avoid-column;
+
+Escribir en diferentes direcciones (El ejemplo es en vertical):
+
+  writing-mode: vertical-rl;
+
+Letras en diferentes direcciones 
+
+  text-orientation: upright;
+
+Hacer que el texto esté justificado: 
+
+  text-align: justify;
+
+Hacer que el texto rodee el contorno de una imagen: 
+
+  shape-outside: circle();
+  shape-outside: ellipse(); => ej: ellipse(50% 50%);
+  shape-outside: border-box;
+  shape-outside: inset(0px round 120px) border-box;
+  shape-outside: url('imgUrl');
+  shape-margin: 30px;
+  shape-outside: polygon(nonzero, 0 44%, 62% 0, 142% 100%, 0 78%);
+
+Hacer que una imagen tenga sombra definida
+
+  - filter: grayscale(70%) contrast(1.2) drop-shadow(40px 10px 0 rgba(0,0,0,.3) ); 
+
+Hace que se puedan ver el fondo (algo como si pusieras un background degradado en alpha)
+
+  - mix-blend-mode: multiply; (puedes usar también hue y hace que la imagen quede por encima del color de backgrund, pero el texto y lo demás sigue por encima de la imagen.)
+
+Lineas tipo cebra (te recomiendo usarlas en ::after o ::before)
+
+  - background: repeating-linear-gradient(90deg,#000,#000 50%,transparent 50%,transparent 100%);
+  - background-size: 12px 100%;
+  - align-self: stretch;
+  - z-index: 0;
+
+Sombra al texto: 
+
+  - text-shadow: 5px 0 2px rgba(0,0,0,.3);
+
+
+
+
+
+
+--------------------
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 
 DESARROLLO WEB ONLINE
 
