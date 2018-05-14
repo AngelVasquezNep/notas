@@ -1,7 +1,13 @@
 Temas a explorar: 
 
-- Crear formas poligonales:
-  clip-path: polygon(0 44%, 62% 0, 142% 100%, 0 78%); Para crear poligonos 
+Crear formas poligonales:
+
+  - clip-path: polygon(0 44%, 62% 0, 142% 100%, 0 78%); Para crear poligonos 
+
+Que las imagenes se distribuyan de la mejor forma:
+
+  - object-fit: cover;
+
 
 En CSS Grid Layout parece funcionar para que todo se aline de una forma interesante, se usa sobre los hijos del grid. (como si fueran una columna continua)
 

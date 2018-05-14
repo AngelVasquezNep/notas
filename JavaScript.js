@@ -221,6 +221,17 @@ console.log(`En esta semana ${nombre} corrió un total de ${totalKms}kms, siendo
 
 
 
+Notas ARRAYS 
+
+Eliminar un elemento de un array
+
+elementoAEliminar.splice(pos, n);
+
+pos = "Posición en el Arreglo"
+n = "Elementos a eliminar a partir de ese elemento, colocar 1"
+
+
+
 
 CLASE 5 GOKU VS SUPERMAN - CICLOS WHILE//(MIENTRAS QUE ALGO SEA VERDADERO)
 
