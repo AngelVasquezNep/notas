@@ -191,7 +191,7 @@ main (...) {
   - Puede iniciar con $ o _
   - Las constantes se escriben en MAYÚSCULAS y contienen _ 
 
-  - Upper Camel Case => Para nombre de Clases => HolaMundo
+  - Upper Camel Case => Para nombre de Clases => HolaMundo y constructor
   - Lower Camel Case => Para variables y metódos 
 
 
@@ -242,6 +242,38 @@ main (...) {
     unaDimension = new int[];
     dosDimensiones = new int[][];
     dosDimensiones = new int[fila][columna];
+
+    int[][] array2d = new int[2][3];
+    int[][][] array3d = new int[1][3][4];
+    int[][][][] array4d = new int[2][3][1][2];
+
+    char [][] days = { {'M', 'T', 'W'}, {'M', 'T', 'W'} };
+
+    Se podría ver de la siguiente forma:
+
+    -----------------
+    |  'M'  |  'M'  |
+    -----------------
+    |  'T'  |  'T'  |
+    -----------------
+    |  'W'  |  'W'  |
+    -----------------
+
+    char [][][] days3d = { { { 'A' },{ 'B' }  },
+                           { { 'A' },{ 'B' }  },
+                           { { 'A' },{ 'B' }} };
+
+    -------------------------------------
+    |  -------  |  -------  |  -------  |
+    |  | 'A' |  |  | 'A' |  |  | 'A' |  |
+    |  -------  |  -------  |  -------  |
+    -------------------------------------
+    |  -------  |  -------  |  -------  |
+    |  | 'B' |  |  | 'B' |  |  | 'B' |  |
+    |  -------  |  -------  |  -------  |
+    -------------------------------------
+
+
 
   => Indices
 
@@ -478,9 +510,9 @@ Importar
 
 Métodos
 
-  Elementos de los métodos: 
+  Elementos (y firma) de los métodos: 
 
-  - Modo de acceso: public
+  - Modificador de acceso: public
   - Valor regreso: int 
   - Nombre: suma
   - Argumentos: a, b
@@ -490,6 +522,8 @@ Métodos
   }
 
   Sí no regresamos nada en la parte "Valor de regreso" escribiremos void y omitiremos la palabra return.
+
+  Para llamar al método lo hacemos a través del objeto (o clase si estamos dentro de la misma).
 
   => No puede declararse un método dentro de otro método.
 
@@ -537,13 +571,40 @@ Métodos
     }
   }
 
-  Podré accesarla directamente (sin instanciarla => Calculadora c = new Calculadora) simplemente colocaré Calculadora.suma(3, 4);
+  - Acceso a métodos
+
+    A través del nombreDelObjeto.metodo(); o
+    A través del nombreDelaClase.metodo();
+
+    Podré accesarla directamente (sin instanciarla => Calculadora c = new Calculadora) simplemente colocaré Calculadora.suma(3, 4);
 
   => SÚPER NOTA: Dado que los métodos static no se instancian, ayudan a ahorrar memoria.
 
   - Los métodos y atributos estaticos pueden ser accesados por otras clases y a su vez modificados.  
 
 
+- Sobrecarga de métodos 
+
+  En ocasiones necesitaremos que un método con el mismo nombre tenga un comportamiento diferente, para diferenciarlos lo haremos a través de sus parametros.
+  Por ejemplo:
+
+  public class Calculadora {
+
+    public static int suma (int a, int b) {
+      return a + b;
+    }
+
+    public static float suma (int a, float b) {
+      return a + b;
+    }
+
+    public static int suma (int a, int b) {
+      return a + b;
+    }
+
+    ...
+
+  }
 
 
 
@@ -555,11 +616,62 @@ Métodos
 
 
 
+          :::::::::::::::::::
+
+Notas externas (recolectadas de internet - libros y demás )
+
+          :::::::::::::::::::
 
 
 
+- Diferencia entre next y nextLine en Java
+
+  next() solo lee hasta donde encuentra un espacio (hasta un espacio).
+  nextLine() lee todo incluyendo espacios (hasta un enter).
+
+  A continuación, los siguientes métodos pueden ser útiles para la lectura de datos simples:
+  
+  Scanner lector = new Scanner(System.in);
+
+  String p1 = lector.next();           // lee una cadena de texto
+  String p2 = lector.nextLine();       // lee una cadena de texto hasta fin de linea
+
+  int n1 = lector.nextInt();           // lee un numero entero
+  double n2 = lector.nextDouble();     // lee un numero de tipo double
+  float n3 = lector.nextFloat();       // lee un número de tipo flotante
 
 
+
+Métodos de los Strings
+
+String nombre = new String;
+
+nombre = "Angelito";
+
+- Tamaño del string: nombre.lenght; 
+
+- Corta el string: nombre.substring(desde,hasta)
+    nombre.substring(0,3)
+    > Ang
+
+
+- toCharArray() Convertir una cadena de String en un array de caracteres
+
+  char[] nuevaCadena = cadena.toCharArray()
+
+
+- indexOf busca la letra o palabras dentro de otra cadena y regresa el index dónde inicia.
+    
+    String cadena = "Codigo Fuente en Java";
+    int index = cadena.indexOf("C"); 
+    System.out.println(index);
+    > 0
+
+
+- charAt(index) devuelve la letra de una cadena segun su index
+
+    String cadena = new String("Cadena de Texto");
+    System.out.println(cadena.charAt(2));  // Devuelve la letra 'd'
 
 
 
