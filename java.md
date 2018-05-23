@@ -661,7 +661,7 @@ nombre = "Angelito";
 
 
 - indexOf busca la letra o palabras dentro de otra cadena y regresa el index dónde inicia.
-    
+
     String cadena = "Codigo Fuente en Java";
     int index = cadena.indexOf("C"); 
     System.out.println(index);
@@ -675,7 +675,11 @@ nombre = "Angelito";
 
 
 
+- For
 
+  for (String o : arrayItem) {
+    
+  }
 
 
 
