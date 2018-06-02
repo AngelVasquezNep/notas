@@ -2515,6 +2515,36 @@ R: "ola amigo"
 
 
 
+========================
+BANCO
+
+
+const billetes = [ 500, 200, 100, 50]
+
+function entregarDinero(dinero) {
+  let conciente; 
+  let entregado = []
+  for(let bi of billetes) {
+    if(dinero > 0) {
+      conciente = Math.floor(dinero / bi)
+      if(conciente > 0) {
+        entregado.push( {billete: bi, cantidad: conciente} )
+        dinero = dinero - (bi * conciente)
+      }
+    }
+  }
+  console.log("Los billetes entregados:")
+  for(let e of entregado) {
+    console.log(Valor: $ ${e.billete} - ${e.cantidad})
+  }
+}
+
+
+
+
+
+
+
 
 
 
@@ -4699,9 +4729,6 @@ Manejo de Errores
 
 
 
-
-
-
 ===============
 Video API
 
@@ -4709,7 +4736,174 @@ this.video.duration
 
 
 
+- Obtener datos de un formulario con Vanilla JS
 
+const $form = document.getElementById('form')
+$form.addEventListener('submit', handleSubmit)
+
+const handleSubmit = event => {
+	event.preventDefault()
+	const data = new FormData($form)
+	const title = data.get('name') // name es el atributo que se le pone a cada elemento del formulario.
+}
+
+
+
+
+
+
+=============================
+           REDUX             
+=============================
+
+Dan Abramov
+
+- Store: Es el centro y la verdad de todo, con métodos para actualizar, obtener y escuchar datos.
+- Actions: Son bloques de información que envian datos desde la aplicación hacia el store.
+- Reducers: Cambian el estado de la aplicación.
+
+Ciclo
+
+				    			State
+
+		Store											UI
+
+			   Reducer				Action
+
+
+- Principios de Redux
+
+1. Única fuente de verdad:
+El estado de toda tu aplicación esta almacenado en un árbol guardado en un único store lo que hace mas fácil el proceso de depuración.
+
+2. Solo Lectura:
+La única forma de modificar el estado es emitiendo una acción, un objeto que describe que ocurrió.
+
+3. Los cambios se realizan con funciones puras:
+Los reduces son funciones puras que toman el estado anterior y una acción, y devuelven un nuevo estado.
+
+
+- DevTools
+
+Redux devtools
+
+
+
+
+=> STORE
+
+import store from './store.js'
+
+El centro de la verdad de todo, con métodos para actualizar, obtener y escuchar datos.
+	1. Contiene el estado de la aplicacion.
+	2. Puedes acceder al estado con el método getState()
+	3. Puedes actualizar el estado con el método dispatch(action)
+	4. Escucha cambios con el método suscribe(listener)
+	5. Desjar de escuchar cambios retornando la función del método suscribe(listener)
+
+	Para crear un store debemos pasarle 3 parametros:
+
+		import {createStore} from 'redux'
+
+		1. Reducer: función pura que retorna el próximo estado.
+		2. PreloadState / initialState = Estado inicial de la aplicación, primera carga, llamado al Api. Puede ser cualquier tipo de dato.
+		3. Enhancer = función que puede extender redux con capacidades añadidas por librerias externas. Es un párametro opcional.
+
+		const store = createStore(
+			reducer,
+			initialState,
+			enhancer
+		)
+
+
+=> ACTIONS
+
+Bloque de información que envía datos a la aplicación
+
+		1. Se envian usando el método dispatch del store
+		2. Son la única fuente de información del Store
+		3. Son objetos planos de JS
+
+
+		El type del objeto que se envía dentro del dispatch hace referencia al nombre de la acción.
+
+		store.dispatchEvent({
+			type: 'ADD_SONG',
+			payload: {
+				title: 'Despacito'
+			}
+		})
+
+
+=> REDUCERS
+
+		Modificar el store
+
+		1. Es una función pura
+		2. Puede haber más de un una aplicación pero sólo debe haber un store.
+		3. Devuelve el siguiente estado.
+
+		Nunca hacer en un reducer:
+			- Modificar sus argumentos.
+			- Realizar tareas con efectos secundarios, como llamar a una API
+			- Llamar funciones no puras como Date.now(), Math.random()
+
+		const reducer = ( state, action ) => {
+			switch(action.type){
+				case 'ADD_SONG':
+					return [...state, { title: action.payload.title }]
+				default:
+					return state
+			}
+		}
+
+
+=> SUBSCRIBE
+
+		Cada vez que haya un cabio dentro de la aplicación, se disparará la función que reciba como parametro el método subscribe.
+
+		store.subscribe(handleChange)
+
+		const handleChange = () => {
+			// código
+		}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Para desactivar un click en un área especifica, sólo debemos de hacer un "stopPropagation"
+algo como =>
+
+@click="handleClick"
+
+handleClick (ev) {
+  ev.stopPropagation();
+}
+
+
+elementoHtlm.scrollTop => Con esto podemos mover el elemento a voluntad
+elementoHtlm.scrollHeight => El valor de la altura del elemento (Lo aplicamos en nuestra app de Faceshow)
 
 Investigar: offsetParent
 VUE => this.$el.offsetHeight
