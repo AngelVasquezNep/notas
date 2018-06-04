@@ -4870,13 +4870,84 @@ Bloque de información que envía datos a la aplicación
 
 
 
+=======================
+			REACT-REDUX
+=======================
+
+npm i -S react-redux
+
+Api
+		<Provider store>
+		connect([mapStateToProps], [mapDispatchToProps], [mergeProps], [options])
+
+Los ID de los elementos del mismo tipo debe ser diferente, aunque se encuentren en listas distintas.
+Por ejemplo. En la estructura de platzi-video, cada categoria tenia su playlist, cada playlist tenia 5 elementos y sus ID's eran del 1 al 5, eso afectaría. Para mejorarlo, debemos cambiarles los id.
+
+=> CREAR STORE
+
+		import {createStore} from 'redux'
+
+		// Con esto le damos una estructura al initialState
+		const initialState = {
+			data: {...data}
+		}
+
+		const store = createStore(
+			(store) => store,
+			initialState,
+			window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()  
+		)
+
+		console.log( store.getState() )
 
 
+=> PROVIDER
+
+		HOC => Higher-Order Component. Un componente de orden superior hereda cosas (propiedades) a sus hijos. Con el provider ya no usaremos el método subscribe
+		
+		Ahora la información inicial estará en el store, el store se le pasara al provider y el provider lo heredara al App.
+
+		render(
+			<Provider store = {store}>
+				<App/>
+			</Provider>
+		, document.getElementById('root'))
 
 
+=> CONNECT
 
+		nota: En la ciencia de la computación, currificar es la técnica inventada por Moses Schönfinkel y Gottlob Frege que consiste en transformar una función que utiliza múltiples argumentos en una secuencia de funciones que utilizan un único argumento.
 
+		import { connect } from 'react-redux'
 
+		connect es una funcion currificada que en el segundo argumento recibe el elemento a renderar y en el primero una funcion:
+
+		function mapStateToProps (state, props) {
+			return {
+				categories: state.data.categories
+			}
+		}
+
+		export default connect(mapStateToProps)(Component)
+
+		De esta forma el Component recibira una propiedad llamada 'categories' que provendrá del state
+
+		=> USAR CONNECT DENTRO DE LOS SMART COMPONENTS HIJOS
+
+		import { connect } from 'react-redux'
+
+		Nota: En caso de NO necesitar datos del STORE, en el primer parametro no enviamos nada.
+
+		export default connect()(Component)
+
+		Con ésto podemos mandar ACTIONS pues tenemos a disposición:
+
+				this.props.dispatch({
+					type: 'TYPE',
+					payload: {
+						...
+					}
+				})
 
 
 
