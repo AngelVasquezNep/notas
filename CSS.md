@@ -952,13 +952,13 @@ img.setAtribute('src', platziImg)
 
 
 
-------------------------------------------------------------------------------------------------------
-------------------------------------------------------------------------------------------------------
-------------------------------------------------------------------------------------------------------
-                                          RESPONSIVE DESING
-------------------------------------------------------------------------------------------------------
-------------------------------------------------------------------------------------------------------
-------------------------------------------------------------------------------------------------------
+---------------------------------------------
+---------------------------------------------
+---------------------------------------------
+               RESPONSIVE DESING
+---------------------------------------------
+---------------------------------------------
+---------------------------------------------
 
 
 
@@ -1006,7 +1006,7 @@ RESPONSIVE DESIGN
 
 	-Layout shifter: COMPLEJO
 
-	https://foodsense.is
+	http://foodsense.is
 	Es una disposición de contenido muy 			diferente para cada tamaño, de tal forma 		que no solamente las columnas caigan, sino 	que el menu pase a estar arriba, el logo 		decrezca, etc.
 	Es un diseño fijo que responde a las 			necesidades del espacio.
 
@@ -1199,7 +1199,6 @@ Con srcset cubrimos las pantallas de celular con 1 y 2 retina, en SKETCH se pued
 
 @media screen and (-webkit-min-device-pixel-ratio: 2){
 	Aquin ponemos las cosas que necesitamos para pantallas de 2x retina
-
 }
 
 al background de portada siempre agreguemos un color para que el color cargue aunque la imagen tarde un poco más.
@@ -2148,6 +2147,7 @@ AnimatedScrollTo with jquery
 SCROLL with jquery
 
 <button id="botoncito" href="#objetivo">Mover</button> 
+<p id="objetivo">Objetivo</p>
 
 document.getElementById('botoncito').addEventListener('click',()=>{
   const $objetivo = document.getElementById("objetivo")
@@ -2356,7 +2356,7 @@ const imagenes = [
 
 
 
-======================== Filgros para imagens ======================== 
+======================== Filtros para imagens ======================== 
 
 
 .imagen {

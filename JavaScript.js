@@ -4951,6 +4951,40 @@ Por ejemplo. En la estructura de platzi-video, cada categoria tenia su playlist,
 
 
 
+==> CONCEPTOS AVANZADOS DE REDUX
+
+		=> NORMALIZACIÓN DE DATOS
+
+		https://github.com/paularmstrong/normalizr
+
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

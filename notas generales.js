@@ -1,5 +1,7 @@
 NOTAS RAPIDAS 
 
+- <El efecto Dunning-Kruger es un sesgo cognitivo que no nos permite sentirnos competentes cuando nos hemos preparado para dar una conferencia, y en cambio a las personas realmente incompetentes las hace sentir con mayor conocimiento del tema. Recuerda que “la audiencia no sabe lo que no sabe”, y lo importante de esta frase es que pienses que no hay que hablar sobre lo que esté saliendo mal: “llegué tarde”, “estoy nervioso”, “las cosas no están saliendo como esperaba”; son cosas que la audiencia no sabe y que puedes sentir la necesidad de decir para liberarte del miedo, pero puedes evitarlo.>
+
 
 
 ============================================
