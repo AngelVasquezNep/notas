@@ -4881,7 +4881,7 @@ Api
 		connect([mapStateToProps], [mapDispatchToProps], [mergeProps], [options])
 
 Los ID de los elementos del mismo tipo debe ser diferente, aunque se encuentren en listas distintas.
-Por ejemplo. En la estructura de platzi-video, cada categoria tenia su playlist, cada playlist tenia 5 elementos y sus ID's eran del 1 al 5, eso afectaría. Para mejorarlo, debemos cambiarles los id.
+Por ejemplo. En la estructura de platzi-video, cada categoria tenia su playlist, cada playlist tenia 5 elementos y sus IDs eran del 1 al 5, eso afectaría. Para mejorarlo, debemos cambiarles los id.
 
 => CREAR STORE
 
