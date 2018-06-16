@@ -470,6 +470,15 @@ grid-template-columns: repeat(auto-fill, 250px);
 ## JS | React | Vue
 
 
+Plugins Visual Studio Code
+
+AutoFileName
+Color Highlight
+Color Picker
+ESLint
+FileNameComplete
+vscode-style-jsx
+
 
 
 
